@@ -1,7 +1,7 @@
-/* General */
+/* ---------- GLOBAL STYLE ---------- */
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
+  font-family: 'Inter', Arial, sans-serif;   
   color: #222;
 }
 
@@ -16,16 +16,18 @@ ul {
   padding: 0;
 }
 
-/* Logo (placeholder box) */
+/* ---------- LOGO ---------- */
 .logo {
-  width: 100px;
-  height: 32px;
-  background: #d4d4d4;
-  border: 1px dashed #999;
-  text-align: center;
-  line-height: 32px;
-  font-size: 12px;
-  color: #666;
+  display: block;
+}
+
+.logo-img {
+  height: 90px;
+  display: block;
+}
+
+.footer-logo-img {
+  height: 110px;
 }
 
 /* ---------- HEADER ---------- */
@@ -33,42 +35,68 @@ ul {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 16px 40px;
-  background: white;
-}
-
-.nav ul {
-  display: flex;
-  gap: 20px;
+  padding: 2px 40px;
+  background: #2c3854;
+  border-bottom: 3px solid #6fb8c9;
 }
 
 .nav a {
+  margin: 0 12px;
   font-size: 14px;
-  padding-bottom: 4px;
+  color: white;
 }
 
 .nav a:hover {
-  border-bottom: 2px solid purple;
+  border-bottom: 2px solid #d9b45f;
 }
 
 .book-btn {
-  background: #b5b5b5;
-  padding: 8px 18px;
-  border: 1px solid #999;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: white;
+  color: #2c3854;
+  padding: 10px 22px;
+  border: 1px solid #d9b45f;
+  border-radius: 30px;
   font-weight: bold;
   font-size: 14px;
 }
 
+.book-btn:hover {
+  background: rgba(217, 180, 95, 0.15);
+}
+
 /* ---------- FOOTER ---------- */
 .footer {
-  background: #ececec;
+  background-color: #2c3854;
+  color: white;
   padding: 30px 40px 20px;
+  position: relative;
+  overflow: hidden;       
+}
+
+.footer::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("../assets/homepage/footer_genshin7elements.png");
+  background-repeat: repeat;
+  background-size: 1600px;
+  opacity: 0.15;           
+  filter: grayscale(100%); 
+}
+
+.footer > * {
+  position: relative;
+  z-index: 1;              
 }
 
 .footer-top {
   display: flex;
   justify-content: space-between;
-  align-items: flex-end;
+  align-items: center;
+  padding-bottom: 20px;
 }
 
 .footer-info {
@@ -81,7 +109,6 @@ ul {
   margin: 0;
 }
 
-/* Social icon circles */
 .social {
   display: flex;
   justify-content: flex-end;
@@ -89,17 +116,18 @@ ul {
   margin-bottom: 8px;
 }
 
-.social a {
+.social-icon {
+  display: inline-block;
   width: 26px;
   height: 26px;
   border-radius: 50%;
-  background: #b5b5b5;
+  background: #a9b0bd;
 }
 
 .copyright {
-  border-top: 1px solid #999;
-  margin: 20px 0 0;
+  border-top: 1px solid #566178;
+  margin: 0;
   padding-top: 14px;
   font-size: 13px;
-  color: #666;
+  color: #c3c8d3;
 }
