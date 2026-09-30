@@ -1,7 +1,7 @@
 /* =========================================================
    TEYVAT TRAVEL AGENCY — styles.css
    1. Tokens   2. Base   3. Header   4. Footer
-   5. Shared components   6. Mondstadt page
+   5. Shared components   6. Mondstadt page 7. Homepage
    ========================================================= */
 
 /* ---------- 1. TOKENS ---------- */
@@ -869,5 +869,707 @@ img {
   /* About text sits directly on the background: keep it crisp */
   .about-text {
     color: var(--color-text);
+  }
+}
+
+
+/* =========================================================
+                      9. HOMEPAGE 
+   ========================================================= */
+
+.home-page {
+  --home-slate: #5A7FA6;
+  --home-sky: #4A8AB5;
+  --home-green: #5C7F4A;
+  --home-red: #C0492F;
+  --home-gold-light: #E0B453;
+
+  background: var(--color-white);
+  overflow-x: clip;
+}
+
+.home-page .header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+/* Home titles ---------------------------*/
+.home-title {
+  margin: 0;
+  font-size: clamp(24px, 3vw, 32px);
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-white);
+}
+
+.home-title.gold {
+  color: var(--home-gold-light);
+}
+
+.eyebrow {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+}
+
+.eyebrow.light {
+  color: var(--home-gold-light);
+}
+
+/* ---------- SOCIAL ICONS ---------- */
+.home-page .social-icon {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 0;
+  background: none;
+  transition: transform 0.2s ease;
+}
+
+.home-page .social-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.home-page .social-icon:hover {
+  transform: translateY(-3px);
+}
+
+.home-page .footer .social-icon {
+  width: 28px;
+  height: 28px;
+}
+
+.follow {
+  font-size: 11px;
+  letter-spacing: 0.04em;
+}
+
+.hero-social {
+  position: absolute;
+  right: 44px;
+  bottom: 48px;
+  text-align: right;
+  font-size: 12px;
+
+  .social {
+    justify-content: flex-start;
+    gap: 18px;
+    margin: 10px 0 0;
+  }
+}
+
+/* ---------- HOME HERO ---------- */
+.home-hero {
+  position: relative;
+  min-height: 720px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 40px 44px 48px;
+  color: var(--color-white);
+  background:
+    url("../assets/homepage/Landing Page/Bg.png") center / cover no-repeat;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+}
+
+.home-hero-title {
+  margin: 0;
+  max-width: 900px;
+  font-family: var(--font-heading);
+  font-size: clamp(56px, 9vw, 112px);
+  line-height: 1;
+  font-weight: 600;
+  text-transform: uppercase;
+  text-shadow: 0 4px 16px rgba(0, 0, 0, 0.45);
+}
+
+.home-tagline {
+  margin: 14px 0 20px;
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+.outline-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  width: fit-content;
+  padding: 14px 28px;
+  border: 2px solid var(--color-white);
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background 0.2s ease;
+}
+
+.outline-btn:hover {
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.arrow-dot {
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--color-white);
+  color: var(--color-primary-dark);
+}
+
+
+/* ---------- HOME ABOUT ---------- */
+.home-about {
+  padding: 56px 24px 50px;
+  text-align: center;
+  background: var(--color-white);
+}
+
+/* TEYVAT DESTINATION PACKAGES title */
+.home-about-title {
+  margin: 0 0 18px;
+}
+
+.home-page .home-about-title img {
+  display: block;
+  width: 60vw;
+  max-width: 1000px;
+  min-width: 300px;
+  height: auto;
+  margin: 0 auto;
+}
+
+/* ---------- DESTINATIONS ---------- */
+.destinations {
+  position: relative;
+  padding: 64px 24px 90px;
+  text-align: center;
+  color: var(--home-gold-light);
+  background:
+  linear-gradient(rgba(42, 68, 103, 0.88), rgba(42, 68, 103, 0.88)),
+  url("../assets/homepage/Landing Page/Background.png") center / cover no-repeat;
+}
+
+.section-sub {
+  max-width: 620px;
+  margin: 14px auto 52px;
+  font-family: var(--font-heading);
+  font-size: 15px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.nation-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 24px 22px;
+  max-width: 820px;
+  margin: 0 auto;
+}
+
+.nation {
+  display: block;
+  width: 190px;
+  transition: transform 0.25s ease;
+}
+
+.nation img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.nation:hover {
+  transform: translateY(-6px);
+}
+
+.nation:focus-visible {
+  outline: 2px solid var(--home-gold-light);
+  outline-offset: 4px;
+}
+
+.deco {
+  position: absolute;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.deco-balloon {
+  top: -70px;
+  right: -10px;
+  width: clamp(220px, 20vw, 420px);
+}
+
+.deco-ship {
+  bottom: -50px;
+  left: -10px;
+  width: clamp(180px, 18vw, 380px);
+}
+
+/* ---------- DIRECTOR ---------- */
+.director {
+  padding: 34px 50px;
+  background: var(--home-slate);
+}
+
+.director-card {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 34px 40px;
+  background: var(--color-bg);
+  border: 2px solid var(--color-gold);
+  border-radius: 26px;
+}
+
+.director-photo {
+  flex: 0 0 210px;
+}
+
+.director-photo img {
+  display: block;
+  width: 210px;
+  height: auto;
+}
+
+.director-name {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: 52px;
+  line-height: 1.1;
+  color: var(--color-primary-dark);
+}
+
+.role {
+  margin: 6px 0 14px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--color-primary-dark);
+}
+
+.bio {
+  max-width: 70ch;
+  margin: 0;
+  font-size: 15px;
+  color: var(--color-text-muted);
+}
+
+.pill {
+  display: inline-block;
+  margin: 16px 0 0;
+  padding: 8px 24px;
+  border: 1.5px solid var(--color-gold);
+  border-radius: 999px;
+  font-family: var(--font-heading);
+  font-style: italic;
+  font-size: 17px;
+  color: var(--color-primary-dark);
+}
+
+/* ---------- TESTIMONIALS ---------- */
+.testimonials {
+  padding: 50px 50px 36px;
+  text-align: center;
+  color: var(--color-white);
+  background:
+    linear-gradient(rgba(20, 42, 59, 0.88), rgba(20, 42, 59, 0.88)),
+    url("../assets/homepage/Landing Page/review sec bg.jpg") center / cover;
+}
+
+.testimonials .home-title {
+  margin-top: 6px;
+  font-family: var(--font-heading);
+  font-size: 36px;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.sparkle-line {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  max-width: 260px;
+  margin: 12px auto 30px;
+  color: var(--home-gold-light);
+}
+
+.sparkle-line span {
+  flex: 1;
+  height: 1px;
+  background: var(--home-gold-light);
+  opacity: 0.7;
+}
+
+.review-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+.review {
+  padding: 12px 14px 16px;
+  text-align: left;
+  color: var(--color-text);
+  background: var(--color-white);
+  border: 3px solid var(--color-gold);
+  border-radius: 4px;
+}
+
+.review header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.review header div {
+  display: flex;
+  flex-direction: column;
+  font-size: 12px;
+  line-height: 1.3;
+}
+
+.avatar {
+  width: 38px;
+  height: 38px;
+  object-fit: cover;
+  border: 1px solid var(--color-gold);
+  border-radius: 50%;
+}
+
+.stars {
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: var(--color-gold);
+}
+
+.review p {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.55;
+  text-align: justify;
+}
+
+/* ---------- FAQ ---------- */
+.faq {
+  padding: 50px 50px 60px;
+  text-align: center;
+  background:
+    linear-gradient(rgba(74, 138, 181, 0.9), rgba(74, 138, 181, 0.9)),
+    url("../assets/homepage/Landing Page/FAQ BG.jpg") center / cover;
+}
+
+.faq-list {
+  display: grid;
+  gap: 18px;
+  max-width: 1180px;
+  margin: 30px auto 0;
+  text-align: left;
+}
+
+.faq details {
+  background: var(--color-white);
+  border: 2px solid var(--home-gold-light);
+  border-radius: 10px;
+}
+
+.faq summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 17px 20px;
+  font-size: 14px;
+  font-weight: 500;
+  list-style: none;
+  cursor: pointer;
+}
+
+.faq summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq summary:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 3px;
+}
+
+.faq summary::after {
+  content: "\2192";
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  font-size: 13px;
+  color: var(--color-gold);
+  background: #F7E7C2;
+  transition: transform 0.25s ease;
+}
+
+.faq details[open] summary::after {
+  transform: rotate(90deg);
+}
+
+.faq details p {
+  margin: 0;
+  padding: 0 20px 18px;
+  font-size: 14px;
+  color: var(--color-text-muted);
+}
+
+/* ---------- HOMEPAGE RESPONSIVE ---------- */
+@media (max-width: 900px) {
+  .home-hero {
+    min-height: 560px;
+    padding: 32px 22px;
+  }
+
+  .hero-social {
+    position: static;
+    margin-top: 32px;
+    text-align: left;
+  }
+
+  .hero-social .social {
+    justify-content: flex-start;
+  }
+
+  .deco-balloon {
+  width: 150px;
+  }
+
+  .deco-ship {
+  width: 120px;
+  }
+
+  .nation {
+  width: 150px;
+  }
+
+  .director {
+    padding: 24px 16px;
+  }
+
+  .director-card {
+    flex-direction: column;
+    padding: 28px 20px;
+    text-align: center;
+  }
+
+  .director-photo {
+    flex-basis: auto;
+  }
+
+  .review-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .testimonials,
+  .faq {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .nation {
+    width: 44%;
+  }
+}
+
+/* ---------- HOMEPAGE MOBILE ---------- */
+@media (max-width: 768px) {
+
+  /* Hero */
+  .home-hero {
+    min-height: 560px;
+    padding: 32px 20px 40px;
+    background-position: 62% center;
+  }
+
+  .home-hero-title {
+    max-width: 320px;
+    font-size: clamp(44px, 15vw, 64px);
+    line-height: 1.05;
+  }
+
+  .home-tagline {
+    margin: 12px 0 20px;
+    font-size: 13px;
+  }
+
+  .hero-social {
+    display: none;
+  }
+
+  /* --------- ABOUT ---------- */
+  .home-about {
+    padding: 40px 20px 36px;
+  }
+
+  .home-page .about-img {
+    width: 100%;
+  }
+
+  /* --------- DESTINATIONS ---------- */
+  .destinations {
+    padding: 40px 20px 48px;
+    text-align: left;
+  }
+
+  .destinations .home-title {
+    font-size: 20px;
+    letter-spacing: 0.1em;
+  }
+
+  .section-sub {
+    margin: 10px 0 24px;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+  }
+
+  .deco {
+    display: none;
+  }
+
+  .nation-grid {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .nation {
+    width: 100%;
+    max-width: 360px;
+  }
+
+  /* --------- DIRECTOR ---------- */
+  .director {
+    padding: 20px 14px;
+  }
+
+  .director-card {
+    flex-direction: column;
+    gap: 14px;
+    padding: 24px 18px;
+    text-align: center;
+    border-radius: 24px;
+  }
+
+  .director-photo {
+    flex-basis: auto;
+  }
+
+  .director-photo img {
+    width: 170px;
+  }
+
+  .director-name {
+    font-size: 40px;
+  }
+
+  .bio {
+    max-width: none;
+    font-size: 14px;
+  }
+
+  .pill {
+    padding: 8px 18px;
+    font-size: 15px;
+  }
+
+  /* --------- TESTIMONIALS ---------- */
+  .testimonials {
+    padding: 36px 14px 28px;
+  }
+
+  .testimonials .home-title {
+    font-size: 28px;
+  }
+
+  .review-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .review p {
+    text-align: left;
+  }
+
+  /* --------- FAQ ---------- */
+  .faq {
+    padding: 36px 14px 40px;
+    text-align: left;
+  }
+
+  .faq .home-title {
+    font-size: 22px;
+    letter-spacing: 0.1em;
+  }
+
+  .faq-list {
+    gap: 14px;
+    margin-top: 20px;
+  }
+
+  .footer-top {
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .footer-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .footer .social {
+    order: 1;
+    justify-content: center;
+    gap: 22px;
+    margin: 14px 0 10px;
+  }
+
+  .footer .follow {
+    order: 2;
+  }
+
+  .home-page .footer .social-icon {
+    width: 36px;
+    height: 36px;
+  }
+
+  .copyright {
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .home-hero {
+    min-height: 520px;
+  }
+
+  .director-name {
+    font-size: 36px;
+  }
+
+  .faq .home-title {
+    font-size: 20px;
   }
 }
