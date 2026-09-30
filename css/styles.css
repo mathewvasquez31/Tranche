@@ -238,7 +238,7 @@ ul {
   --nation-light: #EAF4EF;
   --nation-accent: #D6B56D;
 
-  background-image: url("../assets/mondstadt/mondstadt.png");
+  background-image: url("../assets/mondstadt/mondstadt_background.png");
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -254,6 +254,18 @@ ul {
   background-position: center;
   background-attachment: fixed;
 }
+
+.theme-inazuma {
+  --nation-primary: #7663A8;
+  --nation-light: #EEE8FA;
+  --nation-accent: #C99AB5;
+
+  background-image: url("../assets/inazuma/inazuma_background.png");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
 
 /* Base for all nation pages */
 .nation-page {
@@ -320,7 +332,6 @@ ul {
 }
 
 /* ---------- FEATURED STOPS ---------- */
-/* ---------- FEATURED STOPS ---------- */
 
 .stops {
   position: relative;
@@ -348,7 +359,7 @@ ul {
 }
 
 .theme-inazuma .stops::before {
-  background-image: url('../assets/inazuma/bg_featured_stops.jpg');
+  background-image: url('../assets/inazuma/bg_featuredstops.webp');
 }
 
 .theme-sumeru .stops::before {
