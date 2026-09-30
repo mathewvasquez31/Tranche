@@ -41,11 +41,10 @@ body {
   flex-direction: column;
   font-family: var(--font-body);
   color: #222;
-  background-image: url("../assets/homepage/genshin_background.png");
   background-size: 100% auto;
   background-position: top center;
   background-repeat: repeat-y;
-  background-attachment: scroll;
+  background-attachment: sc   roll;
 }
 
 main {
@@ -238,6 +237,22 @@ ul {
   --nation-primary: #5B9D91;
   --nation-light: #EAF4EF;
   --nation-accent: #D6B56D;
+
+  background-image: url("../assets/mondstadt/mondstadt.png");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+.theme-liyue {
+  --nation-primary: #A97832;
+  --nation-light: #F4E4C4;
+  --nation-accent: #7C4A2D;
+
+  background-image: url("../assets/liyue/liyue_background.png");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
 }
 
 /* Base for all nation pages */
@@ -305,6 +320,8 @@ ul {
 }
 
 /* ---------- FEATURED STOPS ---------- */
+/* ---------- FEATURED STOPS ---------- */
+
 .stops {
   position: relative;
   overflow: hidden;
@@ -315,8 +332,39 @@ ul {
   content: "";
   position: absolute;
   inset: 0;
-  background: url('../assets/mondstadt/bg_featured_stops.jpg') center / cover;
   opacity: 0.50;
+  background-position: center;
+  background-size: cover;
+}
+
+/* Featured Stops with background per nation */
+
+.theme-mondstadt .stops::before {
+  background-image: url('../assets/mondstadt/bg_featured_stops.jpg');
+}
+
+.theme-liyue .stops::before {
+  background-image: url('../assets/liyue/bg_featuredstops.png');
+}
+
+.theme-inazuma .stops::before {
+  background-image: url('../assets/inazuma/bg_featured_stops.jpg');
+}
+
+.theme-sumeru .stops::before {
+  background-image: url('../assets/sumeru/bg_featured_stops.jpg');
+}
+
+.theme-fontaine .stops::before {
+  background-image: url('../assets/fontaine/bg_featured_stops.jpg');
+}
+
+.theme-natlan .stops::before {
+  background-image: url('../assets/natlan/bg_featured_stops.jpg');
+}
+
+.theme-snezhnaya .stops::before {
+  background-image: url('../assets/snezhnaya/bg_featured_stops.jpg');
 }
 
 .stops .container {
@@ -470,6 +518,7 @@ ul {
   opacity: 0.8;
   pointer-events: none;
 }
+
 
 /* =========================================================
    7. RESPONSIVE
