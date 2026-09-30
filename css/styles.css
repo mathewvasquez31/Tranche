@@ -1,13 +1,65 @@
-/* ---------- GLOBAL STYLE ---------- */
+/* =========================================================
+   TEYVAT TRAVEL AGENCY — styles.css
+   1. Tokens   2. Base   3. Header   4. Footer
+   5. Shared components   6. Mondstadt page
+   ========================================================= */
+
+/* ---------- 1. TOKENS ---------- */
+:root {
+  /* Design system colors */
+  --color-primary: #243B53;
+  --color-bg: #FBF5E9;
+  --color-primary-dark: #142A3B;
+  --color-surface: #F3E8D2;       /* design system token, not used yet */
+  --color-white: #FFFFFF;
+  --color-text: #1D2C3A;
+  --color-text-muted: #66717C;
+  --color-gold: #C29B4B;
+
+  /* Header / footer extras */
+  --color-header-line: #6fb8c9;
+  --color-footer-line: #566178;
+  --color-footer-text: #c3c8d3;
+  --color-social: #a9b0bd;
+
+  /* Fonts */
+  --font-heading: "Cormorant Garamond", serif;
+  --font-body: "Inter", Arial, sans-serif;
+}
+
+/* ---------- 2. BASE ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
-  font-family: 'Inter', Arial, sans-serif;   
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-body);
   color: #222;
+  background-image: url("../assets/homepage/genshin_background.png");
+  background-size: 100% auto;
+  background-position: top center;
+  background-repeat: repeat-y;
+  background-attachment: scroll;
+}
+
+main {
+  flex: 1;
 }
 
 a {
   color: inherit;
   text-decoration: none;
+}
+
+a:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 3px;
 }
 
 ul {
@@ -30,24 +82,25 @@ ul {
   height: 110px;
 }
 
-/* ---------- HEADER ---------- */
+/* ---------- 3. HEADER ---------- */
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 2px 40px;
-  background: #2c3854;
-  border-bottom: 3px solid #6fb8c9;
+  background: var(--color-primary);
+  border-bottom: 3px solid var(--color-header-line);
 }
 
 .nav a {
   margin: 0 12px;
   font-size: 14px;
   color: white;
+  border-bottom: 2px solid transparent;
 }
 
 .nav a:hover {
-  border-bottom: 2px solid #d9b45f;
+  border-bottom-color: var(--color-gold);
 }
 
 .book-btn {
@@ -55,25 +108,25 @@ ul {
   align-items: center;
   gap: 6px;
   background: white;
-  color: #2c3854;
+  color: var(--color-primary);
   padding: 10px 22px;
-  border: 1px solid #d9b45f;
+  border: 1px solid var(--color-gold);
   border-radius: 30px;
   font-weight: bold;
   font-size: 14px;
 }
 
 .book-btn:hover {
-  background: rgba(217, 180, 95, 0.15);
+  background: rgba(194, 155, 75, 0.15);
 }
 
-/* ---------- FOOTER ---------- */
+/* ---------- 4. FOOTER ---------- */
 .footer {
-  background-color: #2c3854;
+  background-color: var(--color-primary);
   color: white;
   padding: 30px 40px 20px;
   position: relative;
-  overflow: hidden;       
+  overflow: hidden;
 }
 
 .footer::before {
@@ -83,13 +136,13 @@ ul {
   background-image: url("../assets/homepage/footer_genshin7elements.png");
   background-repeat: repeat;
   background-size: 1600px;
-  opacity: 0.15;           
-  filter: grayscale(100%); 
+  opacity: 0.15;
+  filter: grayscale(100%);
 }
 
 .footer > * {
   position: relative;
-  z-index: 1;              
+  z-index: 1;
 }
 
 .footer-top {
@@ -121,13 +174,640 @@ ul {
   width: 26px;
   height: 26px;
   border-radius: 50%;
-  background: #a9b0bd;
+  background: var(--color-social);
 }
 
 .copyright {
-  border-top: 1px solid #566178;
+  border-top: 1px solid var(--color-footer-line);
   margin: 0;
   padding-top: 14px;
   font-size: 13px;
-  color: #c3c8d3;
+  color: var(--color-footer-text);
+}
+
+/* ---------- 5. SHARED COMPONENTS ---------- */
+.container {
+  max-width: 1198px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.section-title {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 0 0 24px;
+  font-family: var(--font-heading);
+  font-size: 36px;
+  line-height: 44px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--color-primary);
+}
+
+.title-icon {
+  width: 44px;
+  height: 44px;
+  object-fit: contain;
+}
+
+.btn {
+  display: inline-block;
+  padding: 12px 26px;
+  border-radius: 999px;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 600;
+  letter-spacing: 0.28px;
+}
+
+.btn-dark {
+  background: var(--color-primary);
+  color: var(--color-white);
+  border: 2px solid var(--color-gold);
+}
+
+.btn-dark:hover {
+  background: var(--color-primary-dark);
+}
+
+/* ---------- 6. MONDSTADT PAGE ---------- */
+
+/* Nation theme (only these 3 change per page) */
+.theme-mondstadt {
+  --nation-primary: #5B9D91;
+  --nation-light: #EAF4EF;
+  --nation-accent: #D6B56D;
+}
+
+/* Base for all nation pages */
+.nation-page {
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.625;
+  color: var(--color-text);
+}
+
+/* ---------- HERO ---------- */
+.hero {
+  position: relative;
+  min-height: 520px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-size: cover;
+  background-position: center;
+  background-color: var(--color-primary);
+}
+
+.hero-content {
+  color: var(--color-white);
+}
+
+.hero-icon {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+}
+
+.hero-title {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: 64px;
+  line-height: 68px;
+  font-weight: 600;
+  letter-spacing: -1.28px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6),
+               0 6px 20px rgba(0, 0, 0, 0.5);
+}
+
+.hero-tagline {
+  margin: 4px 0 0;
+  font-family: var(--font-heading);
+  font-style: italic;
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: 600;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7),
+               0 4px 14px rgba(0, 0, 0, 0.5);
+}
+
+/* ---------- ABOUT ---------- */
+.about {
+  padding: 70px 0 90px;
+}
+
+.about-text {
+  max-width: 1050px;
+  margin: 0;
+  color: var(--color-text);
+}
+
+/* ---------- FEATURED STOPS ---------- */
+.stops {
+  position: relative;
+  overflow: hidden;
+  padding: 60px 0 40px;
+}
+
+.stops::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url('../assets/mondstadt/bg_featured_stops.jpg') center / cover;
+  opacity: 0.50;
+}
+
+.stops .container {
+  position: relative;
+  z-index: 1;
+}
+
+.stops-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+
+/* Cards are exported from Figma as full images (frame + text included) */
+.stop-card img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* ---------- TOUR PACKAGE ---------- */
+.package {
+  padding: 60px 0 70px;
+}
+
+.package-card {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  gap: 24px;
+  padding: 20px;
+  background: var(--color-bg);
+  border: 2px solid var(--color-gold);
+  border-radius: 24px;
+}
+
+.package-photo {
+  width: 454px;
+  height: 330px;
+  object-fit: cover;
+  border: 2px solid var(--color-gold);
+  flex-shrink: 0;
+}
+
+.package-info {
+  position: relative;
+  z-index: 1;
+  flex: 1;
+}
+
+.package-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.package-title {
+  margin: 0;
+  padding: 4px 14px;
+  background: var(--nation-light);
+  border-radius: 999px;
+  font-size: 20px;
+  line-height: 28px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--color-primary);
+}
+
+.package-badge {
+  padding: 2px 12px;
+  border: 1.5px solid var(--color-gold);
+  border-radius: 999px;
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 500;
+  letter-spacing: 0.24px;
+  color: var(--color-primary);
+}
+
+.package-price {
+  margin: 24px 0;
+  font-family: var(--font-heading);
+  font-size: 48px;
+  line-height: 52px;
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+.package-price span {
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--color-text-muted);
+}
+
+.inclusions-label {
+  margin: 0 0 10px;
+  font-size: 14px;
+  line-height: 22px;
+  font-weight: 600;
+}
+
+.inclusions {
+  margin: 0 0 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.inclusions li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  background: var(--color-white);
+  border: 1px solid var(--nation-accent);
+  border-radius: 10px;
+  font-size: 14px;
+  line-height: 22px;
+}
+
+/* Check icon (CSS circle with tick) */
+.inclusions li::before {
+  content: "\2713";
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: var(--nation-primary);
+  color: var(--color-white);
+  font-size: 12px;
+}
+
+/* Book Now button aligned to the right (no float) */
+.package-info .btn {
+  display: block;
+  width: fit-content;
+  margin-left: auto;
+}
+
+/* Faint emblem watermark */
+.package-emblem {
+  position: absolute;
+  right: 56px;
+  bottom: 0;
+  width: 370px;
+  opacity: 0.8;
+  pointer-events: none;
+}
+
+/* =========================================================
+   7. RESPONSIVE
+   ========================================================= */
+
+/* Hamburger button is hidden on desktop */
+.nav-toggle {
+  display: none;
+}
+
+/* Media should never overflow its container */
+img {
+  max-width: 100%;
+}
+
+/* ---------- TABLET & SMALL LAPTOP (≤ 1024px) ---------- */
+@media (max-width: 1024px) {
+  .header {
+    padding: 2px 24px;
+  }
+
+  .nav a {
+    margin: 0 8px;
+  }
+
+  .stops-grid {
+    gap: 20px;
+  }
+
+  .package-photo {
+    width: 340px;
+    height: 280px;
+  }
+
+  .package-price {
+    font-size: 42px;
+    line-height: 46px;
+  }
+
+  /* Two columns get cramped here, so stack inclusions */
+  .inclusions {
+    grid-template-columns: 1fr;
+  }
+
+  .package-emblem {
+    width: 280px;
+    right: 24px;
+  }
+}
+
+/* ---------- TABLET / MOBILE (≤ 768px) ---------- */
+@media (max-width: 768px) {
+
+  /* Header: logo only, as in the mobile design */
+  .header {
+    justify-content: flex-start;
+    padding: 2px 20px;
+    border-bottom-width: 2px;
+  }
+
+  /* Hamburger menu: nav + Book button collapse under the logo */
+  .header {
+    flex-wrap: wrap;
+  }
+
+  .nav-toggle {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    width: 44px;
+    height: 44px;
+    margin-left: auto;
+    background: transparent;
+    border: 1px solid var(--color-gold);
+    border-radius: 10px;
+    cursor: pointer;
+  }
+
+  .nav-toggle span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: var(--color-white);
+    border-radius: 2px;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+  }
+
+  .header.is-open .nav-toggle span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .header.is-open .nav-toggle span:nth-child(2) { opacity: 0; }
+  .header.is-open .nav-toggle span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  .nav {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    padding: 6px 0 10px;
+  }
+
+  .nav a {
+    margin: 0;
+    padding: 12px 4px;
+    font-size: 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  }
+
+  .book-btn {
+    display: none;
+    width: 100%;
+    justify-content: center;
+    margin-bottom: 14px;
+  }
+
+  .header.is-open .nav {
+    display: flex;
+  }
+
+  .header.is-open .book-btn {
+    display: inline-flex;
+  }
+
+  .logo-img {
+    height: 64px;
+  }
+
+  /* Hero */
+  .hero {
+    min-height: 300px;
+    padding: 0 20px;
+  }
+
+  .hero-icon {
+    width: 56px;
+    height: 56px;
+  }
+
+  .hero-title {
+    font-size: 44px;
+    line-height: 48px;
+    letter-spacing: -0.88px;
+  }
+
+  .hero-tagline {
+    font-size: 18px;
+    line-height: 26px;
+  }
+
+  /* Section titles: icon stacked above centered heading */
+  .section-title {
+    flex-direction: column;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 20px;
+    font-size: 28px;
+    line-height: 36px;
+    text-align: center;
+  }
+
+  /* About */
+  .about {
+    padding: 60px 0 70px;
+  }
+
+  .about-text {
+    margin: 0 auto;
+    padding: 0 8px;
+    text-align: center;
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  /* Featured stops: single column */
+  .stops {
+    padding: 40px 0 30px;
+  }
+
+  .stops-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  /* Tour package: stacked card */
+  .package {
+    padding: 30px 0 50px;
+  }
+
+  .package-card {
+    flex-direction: column;
+    gap: 20px;
+    padding: 16px;
+    border-radius: 20px;
+  }
+
+  .package-photo {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 454 / 330;
+  }
+
+  .package-header {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  /* Emblem already appears in the card; hide the extra header icon on mobile */
+  .package-header .title-icon {
+    display: none;
+  }
+
+  .package-title {
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  .package-price {
+    margin: 18px 0;
+    font-size: 40px;
+    line-height: 44px;
+  }
+
+  .inclusions li {
+    padding: 12px;
+  }
+
+  /* Full-width Book Now button */
+  .package-info .btn {
+    width: 100%;
+    margin-left: 0;
+    padding: 16px 26px;
+    text-align: center;
+  }
+
+  .package-emblem {
+    width: 240px;
+    right: -30px;
+    opacity: 0.35;
+  }
+
+  /* Footer: stacked, left aligned */
+  .footer {
+    padding: 28px 20px 20px;
+  }
+
+  .footer-top {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .footer-logo-img {
+    height: 84px;
+  }
+
+  .footer-info {
+    text-align: left;
+  }
+
+  .social {
+    justify-content: flex-start;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+
+  .social-icon {
+    width: 30px;
+    height: 30px;
+  }
+
+  .footer::before {
+    background-size: 900px;
+  }
+}
+
+/* ---------- PHONE (≤ 480px) ---------- */
+@media (max-width: 480px) {
+  .container {
+    padding: 0 16px;
+  }
+
+  .hero {
+    min-height: 260px;
+  }
+
+  .hero-title {
+    font-size: 38px;
+    line-height: 42px;
+  }
+
+  .section-title {
+    font-size: 24px;
+    line-height: 32px;
+  }
+
+  .package-price {
+    font-size: 36px;
+  }
+
+  .copyright {
+    font-size: 12px;
+  }
+}
+
+/* ---------- ACCESSIBILITY ---------- */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    scroll-behavior: auto !important;
+    transition: none !important;
+  }
+}
+
+/* =========================================================
+   8. MOBILE BACKGROUND FIX
+   ========================================================= */
+@media (max-width: 768px) {
+  html {
+    background-color: #dcebf5;
+  }
+
+  body {
+    background-image: none;
+  }
+
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background:
+      linear-gradient(rgba(255, 255, 255, 0.45), rgba(255, 255, 255, 0.45)),
+      url("../assets/homepage/genshin_background.png") center top / cover no-repeat;
+    pointer-events: none;
+  }
+
+  /* About text sits directly on the background: keep it crisp */
+  .about-text {
+    color: var(--color-text);
+  }
 }
