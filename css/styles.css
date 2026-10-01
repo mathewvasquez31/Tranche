@@ -288,6 +288,28 @@ ul {
   background-attachment: fixed;
 }
 
+.theme-fontaine {
+  --nation-primary: #4E8BA8;
+  --nation-light: #E4F1F5;
+  --nation-accent: #B9A6D8;
+
+  background-image: url("../assets/fontaine/fontaine_background.png");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+.theme-sumeru {
+  --nation-primary: #648A58;
+  --nation-light: #E8F0DD;
+  --nation-accent: #C7A85A;
+
+  background-image: url("../assets/sumeru/sumeru_background.png");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
 /* Base for all nation pages */
 .nation-page {
   font-family: var(--font-body);
@@ -384,11 +406,11 @@ ul {
 }
 
 .theme-sumeru .stops::before {
-  background-image: url('../assets/sumeru/bg_featured_stops.jpg');
+  background-image: url('../assets/sumeru/bg_featuredstops.jpg');
 }
 
 .theme-fontaine .stops::before {
-  background-image: url('../assets/fontaine/bg_featured_stops.jpg');
+  background-image: url('../assets/fontaine/Fontaine bg feature stops.webp');
 }
 
 .theme-natlan .stops::before {
