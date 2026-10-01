@@ -266,6 +266,16 @@ ul {
   background-attachment: fixed;
 }
 
+.theme-natlan {
+  --nation-primary: #B95638;
+  --nation-light: #F7DDD0;
+  --nation-accent: #D39B45;
+
+  background-image: url("../assets/natlan/natlan_background.png");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
 
 /* Base for all nation pages */
 .nation-page {
@@ -371,7 +381,7 @@ ul {
 }
 
 .theme-natlan .stops::before {
-  background-image: url('../assets/natlan/bg_featured_stops.jpg');
+  background-image: url('../assets/natlan/natlan feature stop bg.webp');
 }
 
 .theme-snezhnaya .stops::before {
@@ -1390,186 +1400,4 @@ img {
     width: 44%;
   }
 }
-
-/* ---------- HOMEPAGE MOBILE ---------- */
-@media (max-width: 768px) {
-
-  /* Hero */
-  .home-hero {
-    min-height: 560px;
-    padding: 32px 20px 40px;
-    background-position: 62% center;
-  }
-
-  .home-hero-title {
-    max-width: 320px;
-    font-size: clamp(44px, 15vw, 64px);
-    line-height: 1.05;
-  }
-
-  .home-tagline {
-    margin: 12px 0 20px;
-    font-size: 13px;
-  }
-
-  .hero-social {
-    display: none;
-  }
-
-  /* --------- ABOUT ---------- */
-  .home-about {
-    padding: 40px 20px 36px;
-  }
-
-  .home-page .about-img {
-    width: 100%;
-  }
-
-  /* --------- DESTINATIONS ---------- */
-  .destinations {
-    padding: 40px 20px 48px;
-    text-align: left;
-  }
-
-  .destinations .home-title {
-    font-size: 20px;
-    letter-spacing: 0.1em;
-  }
-
-  .section-sub {
-    margin: 10px 0 24px;
-    font-size: 11px;
-    letter-spacing: 0.1em;
-  }
-
-  .deco {
-    display: none;
-  }
-
-  .nation-grid {
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-  }
-
-  .nation {
-    width: 100%;
-    max-width: 360px;
-  }
-
-  /* --------- DIRECTOR ---------- */
-  .director {
-    padding: 20px 14px;
-  }
-
-  .director-card {
-    flex-direction: column;
-    gap: 14px;
-    padding: 24px 18px;
-    text-align: center;
-    border-radius: 24px;
-  }
-
-  .director-photo {
-    flex-basis: auto;
-  }
-
-  .director-photo img {
-    width: 170px;
-  }
-
-  .director-name {
-    font-size: 40px;
-  }
-
-  .bio {
-    max-width: none;
-    font-size: 14px;
-  }
-
-  .pill {
-    padding: 8px 18px;
-    font-size: 15px;
-  }
-
-  /* --------- TESTIMONIALS ---------- */
-  .testimonials {
-    padding: 36px 14px 28px;
-  }
-
-  .testimonials .home-title {
-    font-size: 28px;
-  }
-
-  .review-grid {
-    grid-template-columns: 1fr;
-    gap: 16px;
-  }
-
-  .review p {
-    text-align: left;
-  }
-
-  /* --------- FAQ ---------- */
-  .faq {
-    padding: 36px 14px 40px;
-    text-align: left;
-  }
-
-  .faq .home-title {
-    font-size: 22px;
-    letter-spacing: 0.1em;
-  }
-
-  .faq-list {
-    gap: 14px;
-    margin-top: 20px;
-  }
-
-  .footer-top {
-    flex-direction: column;
-    align-items: center;
-    gap: 16px;
-  }
-
-  .footer-info {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-
-  .footer .social {
-    order: 1;
-    justify-content: center;
-    gap: 22px;
-    margin: 14px 0 10px;
-  }
-
-  .footer .follow {
-    order: 2;
-  }
-
-  .home-page .footer .social-icon {
-    width: 36px;
-    height: 36px;
-  }
-
-  .copyright {
-    text-align: center;
-  }
-}
-
-@media (max-width: 480px) {
-  .home-hero {
-    min-height: 520px;
-  }
-
-  .director-name {
-    font-size: 36px;
-  }
-
-  .faq .home-title {
-    font-size: 20px;
-  }
-}
+t
