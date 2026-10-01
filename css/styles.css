@@ -987,6 +987,9 @@ img {
   }
 }
 
+section {
+  scroll-margin-top: 96px; 
+}
 /* ---------- HOME HERO ---------- */
 .home-hero {
   position: relative;
@@ -1411,4 +1414,3 @@ img {
     width: 44%;
   }
 }
-t
