@@ -1030,7 +1030,7 @@ section {
   margin: 0;
   max-width: 900px;
   font-family: var(--font-heading);
-  font-size: clamp(56px, 9vw, 112px);
+  font-size: clamp(48px, 9vw, 96px);
   line-height: 1;
   font-weight: 600;
   text-transform: uppercase;
