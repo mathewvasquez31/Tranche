@@ -277,6 +277,17 @@ ul {
   background-attachment: fixed;
 }
 
+.theme-snezhnaya {
+  --nation-primary: #557A9B;
+  --nation-light: #E5EEF5;
+  --nation-accent: #B8C9D8;
+
+  background-image: url("../assets/snezhnaya/snezhnaya_background.png");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
 /* Base for all nation pages */
 .nation-page {
   font-family: var(--font-body);
@@ -385,7 +396,7 @@ ul {
 }
 
 .theme-snezhnaya .stops::before {
-  background-image: url('../assets/snezhnaya/bg_featured_stops.jpg');
+  background-image: url('../assets/snezhnaya/Snezhnaya Feature stop bg.webp');
 }
 
 .stops .container {
