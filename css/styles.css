@@ -927,8 +927,10 @@ img {
   --home-red: #C0492F;
   --home-gold-light: #E0B453;
 
-  background: var(--color-white);
-  overflow-x: clip;
+  background-image: url("../assets/homepage/genshin_background.png");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
 }
 
 .home-page .header {
