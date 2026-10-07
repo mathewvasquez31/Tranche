@@ -132,6 +132,13 @@ ul {
   border-bottom: 3px solid var(--color-header-line);
 }
 
+/* Sticky navbar rule for each nation page */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
 .nav a {
   margin: 0 12px;
   font-size: 14px;
@@ -271,9 +278,9 @@ ul {
   background: var(--color-primary-dark);
 }
 
-/* ---------- 6. MONDSTADT PAGE ---------- */
+/* ----------  NATION THEMES ---------- */
 
-/* Nation theme (only these 3 change per page) */
+/* (only these 3 change per page) */
 .theme-mondstadt {
   --nation-primary: #5B9D91;
   --nation-light: #EAF4EF;
@@ -616,12 +623,19 @@ ul {
 
 
 /* =========================================================
-   7. RESPONSIVE
+   7. RESPONSIVENESS
    ========================================================= */
 
 /* Hamburger button is hidden on desktop */
 .nav-toggle {
   display: none;
+}
+
+/* NAVBAR MOBILE VIEW: Hidden checkbox that powers the CSS-only hamburger */
+.nav-check {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
 }
 
 /* Media should never overflow its container */
@@ -702,10 +716,23 @@ img {
     border-radius: 2px;
     transition: transform 0.2s ease, opacity 0.2s ease;
   }
+ /* NAVBAR MOBILE VIEW: CSS-only hamburger */
 
+  /* Icon: three lines -> X */
   .header.is-open .nav-toggle span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
   .header.is-open .nav-toggle span:nth-child(2) { opacity: 0; }
   .header.is-open .nav-toggle span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  /* Reveal the nav links (hidden by default on mobile) */
+  .nav-check:checked ~ .nav {
+    display: flex;
+  }
+
+  /* Keyboard focus ring on the hamburger */
+  .nav-check:focus-visible + .nav-toggle {
+    outline: 2px solid var(--color-gold);
+    outline-offset: 3px;
+  }
 
   .nav {
     display: none;
