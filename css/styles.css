@@ -242,9 +242,12 @@ ul {
 
 .section-title {
   display: flex;
+  flex-direction: column;
   align-items: center;
+  justify-content: center;
+  text-align: center;
   gap: 14px;
-  margin: 0 0 24px;
+  margin: 0 36px 0 0;
   font-family: var(--font-heading);
   font-size: 36px;
   line-height: 44px;
@@ -370,7 +373,7 @@ ul {
 /* ---------- HERO ---------- */
 .hero {
   position: relative;
-  min-height: 520px;
+  min-height: calc(100vh - 70px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -414,12 +417,13 @@ ul {
 
 /* ---------- ABOUT ---------- */
 .about {
-  padding: 70px 0 90px;
+  padding: 60px 100px 100px;
 }
 
 .about-text {
   max-width: 1050px;
-  margin: 0;
+  margin: 56px auto 0;
+  text-align: center;
   color: var(--color-text);
 }
 
@@ -1086,7 +1090,7 @@ section {
 /* ---------- HOME HERO ---------- */
 .home-hero {
   position: relative;
-  min-height: 720px;
+  min-height: calc(100vh - 70px);
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
