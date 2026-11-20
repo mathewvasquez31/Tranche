@@ -1098,9 +1098,9 @@ section {
 
 .home-hero-title {
   margin: 0;
-  max-width: 900px;
+  max-width: 700px;
   font-family: var(--font-heading);
-  font-size: clamp(72px, 9vw, 64px);
+  font-size: clamp(48px, 9vw, 64px);
   line-height: 1;
   font-weight: 600;
   text-transform: uppercase;
@@ -1108,8 +1108,8 @@ section {
 }
 
 .home-tagline {
-  margin: 14px 0 20px;
-  font-size: 14px;
+  margin: 12px 0 48px 6px;
+  font-size: 18px;
   opacity: 0.9;
 }
 
@@ -1121,7 +1121,7 @@ section {
   padding: 14px 28px;
   border: 2px solid var(--color-white);
   border-radius: 999px;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 500;
   transition: background 0.2s ease;
 }
@@ -1221,13 +1221,13 @@ section {
 .deco-balloon {
   top: -100px;
   right: -10px;
-  width: clamp(320px, 20vw, 420px);
+  width: clamp(150px, 22vw, 420px);
 }
 
 .deco-ship {
   bottom: -150px;
   left: -10px;
-  width: clamp(420px, 18vw, 420px);
+  width: clamp(150px, 29vw, 320px);
 }
 
 /* ---------- DIRECTOR ---------- */
@@ -1464,12 +1464,19 @@ section {
     justify-content: flex-start;
   }
 
+  .destinations {
+    padding-top: 130px;
+    padding-bottom: 120px;
+  }
+
   .deco-balloon {
-  width: 150px;
+    width: 150px;
+    top: -60px;
   }
 
   .deco-ship {
-  width: 120px;
+    width: 120px;
+    bottom: -40px;
   }
 
   .nation {
