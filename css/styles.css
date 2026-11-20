@@ -1,7 +1,8 @@
 /* =========================================================
    TEYVAT TRAVEL AGENCY — styles.css
    1. Tokens   2. Base   3. Header   4. Footer
-   5. Shared components   6. Mondstadt page 7. Homepage
+   5. Shared components   6. Mondstadt page 7. Homepage 8. Mobile Background 
+   9. all about HOMEPAGE 10. Homepage: Contacts
    ========================================================= */
 
 /* ---------- FONTS (self-hosted) ---------- */
@@ -1513,3 +1514,249 @@ section {
     width: 44%;
   }
 }
+
+/* =========================================================
+            10. HOMEPAGE: CONTACT US
+   ========================================================= */
+
+.contact {
+  padding: 56px 40px 60px;
+  color: var(--color-white);
+  background-color: var(--color-primary-dark);
+  background-image:
+    linear-gradient(rgba(16, 48, 58, 0.35), rgba(16, 48, 58, 0.35)),
+    url("../assets/homepage/Landing Page/Contacts_bg.png");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-top: 5px solid rgba(194, 155, 75, 0.7);
+  border-bottom: 5px solid rgba(194, 155, 75, 0.7);
+}
+
+.contact-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 375fr) minmax(0, 460fr);
+  gap: clamp(48px, 10vw, 132px);
+  align-items: start;
+  max-width: 970px;
+  margin: 0 auto;
+}
+
+/* ---------- LEFT: INFO ---------- */
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.contact-intro {
+  max-width: 400px;
+  margin: 20px 0 0;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.contact-label {
+  margin: 0 0 8px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.contact-pill {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  height: 44px;
+  margin: 0;
+  padding: 0 18px;
+  font-size: 13px;
+  border: 1.5px solid var(--color-gold);
+  border-radius: 16px;
+  background: rgba(20, 42, 59, 0.35);
+}
+
+a.contact-pill:hover {
+  background: rgba(194, 155, 75, 0.18);
+}
+
+.contact-icon {
+  flex: none;
+  width: 20px;
+  height: 20px;
+}
+
+.contact .social {
+  justify-content: flex-start;
+  gap: 18px;
+  margin: 0;
+}
+
+/* ---------- RIGHT: INQUIRY FORM ---------- */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px 18px 18px;
+  border: 2px solid var(--color-gold);
+  border-radius: 24px;
+  background: rgba(20, 42, 59, 0.55);
+}
+
+.contact-row {
+  display: grid;
+  grid-template-columns: 1fr 1.45fr;
+  gap: 14px;
+}
+
+.contact-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.contact-field label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.contact-field input,
+.contact-field select,
+.contact-field textarea {
+  width: 100%;
+  height: 40px;
+  padding: 0 16px;
+  border: 2px solid var(--color-gold);
+  border-radius: 12px;
+  font-family: inherit;
+  font-size: 13px;
+  color: var(--color-primary-dark);
+  background: rgba(245, 240, 225, 0.86);
+}
+
+.contact-field textarea {
+  height: 165px;
+  padding: 12px 16px;
+  resize: vertical;
+}
+
+.contact-field ::placeholder {
+  font-style: italic;
+  color: #4B5560;
+  opacity: 1;
+}
+
+.contact-field select:invalid {
+  font-style: italic;
+  color: #4B5560;
+}
+
+.contact-field input:focus-visible,
+.contact-field select:focus-visible,
+.contact-field textarea:focus-visible {
+  outline: 2px solid var(--color-white);
+  outline-offset: 2px;
+}
+
+.select-wrap {
+  position: relative;
+}
+
+.select-wrap select {
+  padding-right: 52px;
+  appearance: none;
+}
+
+.select-wrap::after {
+  content: "\2193";
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  font-size: 14px;
+  color: var(--color-gold);
+  background: #F7E7C2;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.contact-field [aria-invalid="true"] {
+  border-color: #FF9E8A;
+}
+
+.field-error {
+  margin: 0;
+  font-size: 12.5px;
+  color: #FFB4A2;
+}
+
+.field-error:empty {
+  display: none;
+}
+
+.contact-submit {
+  height: 42px;
+  margin-top: 0;
+  border: 2px solid var(--color-gold);
+  border-radius: 999px;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-primary-dark);
+  background: var(--color-surface);
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.contact-submit:hover {
+  background: var(--color-bg);
+}
+
+.contact-submit:focus-visible {
+  outline: 2px solid var(--color-white);
+  outline-offset: 3px;
+}
+
+.contact-status {
+  margin: 0;
+  padding: 10px 14px;
+  font-size: 13px;
+  color: var(--color-primary-dark);
+  border-radius: 12px;
+  background: #F7E7C2;
+}
+
+/* ---------- CONTACT RESPONSIVE ---------- */
+@media (max-width: 900px) {
+  .contact {
+    padding: 44px 20px 48px;
+  }
+
+  .contact-layout {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  .contact-info {
+    gap: 28px;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-row {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-form {
+    padding: 18px 14px;
+    border-radius: 20px;
+  }
+}
+
