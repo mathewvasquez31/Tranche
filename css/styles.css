@@ -86,7 +86,7 @@ body {
   background-size: 100% auto;
   background-position: top center;
   background-repeat: repeat-y;
-  background-attachment: sc   roll;
+  background-attachment: scroll;
 }
 
 main {
