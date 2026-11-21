@@ -32,7 +32,9 @@
     <a href="about.html#faqs">FAQs</a>
     <a href="#contact">Contact</a>
   </nav>
-  <a href="booking.html" class="book-btn">Book a Trip →</a>
+
+  <a href="#trip-status-modal" class="book-btn">Check Your Trip Status →</a>
+
 </header>
 
 <main>
@@ -367,7 +369,7 @@
 
       <div class="modal-actions">
         <a href="#booking" class="btn btn-light">Edit</a>
-        <a href="#confirm-modal" class="btn btn-dark">Confirm</a>
+        <a href="booking-status.html#confirm-modal" class="btn btn-dark">Confirm</a>
         </div>
     </div>
   </div>
@@ -406,6 +408,37 @@
       </div>
 
       <img class="modal-watermark" src="assets/mondstadt/watermark-sigil.png" alt="" aria-hidden="true">
+    </div>
+  </div>
+</div>
+
+<!------------- (MODAL) CHECK YOUR TRIP STATUS ------------->
+<div class="modal-overlay trip-modal" id="trip-status-modal" role="dialog" aria-modal="true" aria-labelledby="trip-modal-title">
+  <div class="modal-card">
+    <div class="modal-card-inner">
+      <a href="#!" class="modal-close" aria-label="Close modal">&times;</a>
+
+      <p class="eyebrow">Returning traveler</p>
+      <h2 class="modal-title" id="trip-modal-title">Check Your Trip Status</h2>
+      <p class="modal-desc">Enter the booking reference and the email address used when you submitted your request.</p>
+
+      <form class="trip-form" action="booking-status.html" method="get">
+        <div class="form-row">
+          <div class="form-field">
+            <label for="trip-ref">Booking Reference <span class="required">*</span></label>
+            <input class="form-input" type="text" id="trip-ref" name="ref" placeholder="CEL-7K2QX9" maxlength="20" required>
+            <p class="form-hint">Reference code from your booking confirmation.</p>
+          </div>
+
+          <div class="form-field">
+            <label for="trip-email">Email Address <span class="required">*</span></label>
+            <input class="form-input" type="email" id="trip-email" name="email" placeholder="Your email address" maxlength="100" required>
+            <p class="form-hint">Email you used to book a date.</p>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-dark trip-submit">Find My Booking &rarr;</button>
+      </form>
     </div>
   </div>
 </div>

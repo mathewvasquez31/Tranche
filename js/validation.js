@@ -1,6 +1,6 @@
 /* =========================================================
    CELESTIA TRAVELS AND TOURS — js/validation.js
-   Client-side form validation (Tranche 2, Mathew / UI-UX B)
+   Client-side form validation
 
    AI-ASSISTED CODE: This whole file was generated with Claude
    (Anthropic) from Mathew's task list, then reviewed by Mathew.
@@ -676,6 +676,26 @@
       setRow("confirm-modal", "Schedule", schedule);
       setRow("confirm-modal", "Group Size", travelers);
       setRow("confirm-modal", "Total Amount", total);
+
+            // Save the booking so booking-status.html can show it
+      try {
+        var d = new Date();
+        var ref = "CEL-" + Math.random().toString(36).slice(2, 8).toUpperCase();
+        sessionStorage.setItem("celestiaBooking", JSON.stringify({
+          ref: ref,
+          name: nameEl.value.trim(),
+          email: emailEl.value.trim(),
+          mobile: mobileEl.value.trim(),
+          pkg: currentPkg,
+          dur: p.dur.replace(/[\s\/]/g, ""),   // "3D2N"
+          price: peso(p.price),
+          total: total,
+          travelers: travelers,
+          schedule: schedule,
+          requests: requestsEl.value.trim() || "None",
+          submitted: MONTH_NAMES[d.getMonth()].slice(0, 3) + " " + d.getDate() + ", " + d.getFullYear()
+        }));
+      } catch (e) {}
     }
 
     // Live feedback on the typed fields
@@ -703,7 +723,7 @@
     var reviewLink = document.querySelector('a[href="#review-modal"]');
     if (reviewLink) reviewLink.addEventListener("click", guard);
 
-    var finalLink = document.querySelector('a[href="#confirm-modal"]');
+    var finalLink = document.querySelector('a[href="booking-status.html#confirm-modal"]');
     if (finalLink) finalLink.addEventListener("click", guard);
 
     // Pressing Enter inside a field submits the form: block it unless valid
@@ -721,6 +741,55 @@
      The script is loaded with "defer", so the HTML is ready.
      Each init function stops by itself if its form is not on the page.
      --------------------------------------------------------- */
+
+    /* ---------------------------------------------------------
+     BOOKING STATUS PAGE (booking-status.html)
+     Fills the page with the booking saved by syncReview()
+     --------------------------------------------------------- */
+  function initStatusPage() {
+    if (!document.querySelector(".status-card")) return; // not on this page
+
+    var data;
+    try { data = JSON.parse(sessionStorage.getItem("celestiaBooking")); } catch (e) {}
+    if (!data) return; // nothing saved: keep the sample text
+
+    function setText(sel, value) {
+      document.querySelectorAll(sel).forEach(function (el) { el.textContent = value; });
+    }
+    function setPair(rowSel, labelSel, valueSel, label, value) {
+      document.querySelectorAll(rowSel).forEach(function (row) {
+        var l = row.querySelector(labelSel), v = row.querySelector(valueSel);
+        if (l && v && l.textContent.trim() === label) v.textContent = value;
+      });
+    }
+
+    setText(".status-ref-number, .ref-number", data.ref);
+
+    var msg = document.querySelector(".status-message p");
+    if (msg) msg.textContent = msg.textContent.replace(/Thank you, \w+!/, "Thank you, " + data.name.split(" ")[0] + "!");
+
+    [
+      ["Name", data.name], ["Mobile Number", data.mobile], ["Email", data.email],
+      ["Nation / Tour Package", data.pkg + ", " + data.dur],
+      ["Travel Dates", data.schedule.replace(" – ", " to ")],
+      ["Group Size", data.travelers], ["Special Request", data.requests],
+      ["Submitted", data.submitted], ["Price", data.price + " per person"],
+      ["Total Amount", data.total]
+    ].forEach(function (r) { setPair(".details-item", "dt", "dd", r[0], r[1]); });
+
+    setText(".payment-due-amount", data.total + " due upon approval");
+
+    var pkgText = data.pkg + " (" + data.dur.replace("D", "D/") + ")";
+    [
+      ["Full Name", data.name], ["Email Address", data.email], ["Mobile Number", data.mobile],
+      ["Package", pkgText], ["Schedule", data.schedule], ["Group Size", data.travelers],
+      ["Special Requests", data.requests], ["Total Amount", data.total],
+      ["Price × Group", data.price + " × " + parseInt(data.travelers, 10) + " = " + data.total]
+    ].forEach(function (r) { setPair(".review-row", "span", "strong", r[0], r[1]); });
+    setText(".review-total-bar strong", data.total);
+  }
+
   initInquiryForm();
   initBookingForm();
+  initStatusPage();
 })();
