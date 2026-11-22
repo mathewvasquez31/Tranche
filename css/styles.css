@@ -688,7 +688,14 @@ img {
   .header {
     justify-content: flex-start;
     padding: 2px 20px;
-    border-bottom-width: 2px;
+    border-bottom-width: 2px; 
+  }
+
+  .header {
+    max-height: 100vh;      /* fallback for older browsers */
+    max-height: 100dvh;     /* real visible height on phones */
+    overflow-y: auto;
+    overscroll-behavior: contain;
   }
 
   /* Hamburger menu: nav + Book button collapse under the logo */
@@ -1217,13 +1224,13 @@ section {
 
 .deco-balloon {
   top: -100px;
-  right: -10px;
+  right: 0px;
   width: clamp(150px, 22vw, 420px);
 }
 
 .deco-ship {
   bottom: -150px;
-  left: -10px;
+  left: 0px;
   width: clamp(150px, 29vw, 320px);
 }
 
@@ -3579,5 +3586,21 @@ a.contact-pill:hover {
   .trip-modal:target,
   .trip-modal:target .modal-card {
     animation: none !important;
+  }
+}
+
+@media (max-width: 768px) and (max-height: 700px) {
+  .nav a {
+    padding: 8px 4px;
+    font-size: 15px;
+  }
+
+  .logo-img {
+    height: 52px;
+  }
+
+  .nav-check:checked ~ .book-btn {
+    margin-bottom: 10px;
+    padding: 8px 16px;
   }
 }
