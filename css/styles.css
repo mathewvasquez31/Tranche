@@ -289,77 +289,42 @@ ul {
   --nation-primary: #5B9D91;
   --nation-light: #EAF4EF;
   --nation-accent: #D6B56D;
-
-  background-image: url("../assets/mondstadt/mondstadt_background.png");
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
 }
 
 .theme-liyue {
   --nation-primary: #A97832;
   --nation-light: #F4E4C4;
   --nation-accent: #7C4A2D;
-
-  background-image: url("../assets/liyue/liyue_background.png");
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
 }
 
 .theme-inazuma {
   --nation-primary: #7663A8;
   --nation-light: #EEE8FA;
   --nation-accent: #C99AB5;
-
-  background-image: url("../assets/inazuma/inazuma_background.png");
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
 }
 
 .theme-natlan {
   --nation-primary: #B95638;
   --nation-light: #F7DDD0;
   --nation-accent: #D39B45;
-
-  background-image: url("../assets/natlan/natlan_background.png");
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
 }
 
 .theme-snezhnaya {
   --nation-primary: #557A9B;
   --nation-light: #E5EEF5;
   --nation-accent: #B8C9D8;
-
-  background-image: url("../assets/snezhnaya/snezhnaya_background.png");
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
 }
 
 .theme-fontaine {
   --nation-primary: #4E8BA8;
   --nation-light: #E4F1F5;
   --nation-accent: #B9A6D8;
-
-  background-image: url("../assets/fontaine/fontaine_background.png");
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
 }
 
 .theme-sumeru {
   --nation-primary: #648A58;
   --nation-light: #E8F0DD;
   --nation-accent: #C7A85A;
-
-  background-image: url("../assets/sumeru/sumeru_background.png");
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
 }
 
 /* Base for all nation pages */
@@ -368,6 +333,7 @@ ul {
   font-size: 16px;
   line-height: 1.625;
   color: var(--color-text);
+  background-color: var(--nation-light);
 }
 
 /* ---------- HERO ---------- */
