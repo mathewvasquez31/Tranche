@@ -731,6 +731,12 @@ img {
     display: flex;
   }
 
+    /* Show "Check Your Trip Status" at the bottom of the open hamburger menu */
+  .nav-check:checked ~ .book-btn {
+    display: inline-flex;
+    margin-top: 6px;
+  }
+
   /* Keyboard focus ring on the hamburger */
   .nav-check:focus-visible + .nav-toggle {
     outline: 2px solid var(--color-gold);
