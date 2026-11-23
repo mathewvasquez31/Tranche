@@ -1,23 +1,11 @@
 /* =========================================================
-   CELESTIA TRAVELS AND TOURS — js/validation.js
+   CELESTIA TRAVELS AND TOURS — js/script.js
    Client-side form validation
-
-   AI-ASSISTED CODE: This whole file was generated with Claude
-   (Anthropic) from Mathew's task list, then reviewed by Mathew.
 
    Covers two forms:
      1. Inquiry form  -> about.html   (#contact-form)
      2. Booking form  -> booking.html (.booking-card)
 
-   Data Dictionary mapping (form field -> database column):
-     Inquiry: name -> Inquiry.FullName, phone -> Inquiry.MobileNumber,
-              email -> Inquiry.EmailAddress, inquiry_type -> Inquiry.InquiryType,
-              message -> Inquiry.Message
-     Booking: full_name -> Booking.FullName, email -> Booking.EmailAddress,
-              mobile -> Booking.MobileNumber, group_size -> Booking.GroupSize,
-              requests -> Booking.SpecialRequests
-   Max lengths follow the Data Dictionary:
-     FullName 100, EmailAddress 100, MobileNumber 20.
    ========================================================= */
 
 (function () {
@@ -102,35 +90,68 @@
      Reads the displayed schedule, e.g.
      "Sat, Nov 28 – Mon, Nov 30, 2026", and rejects past dates.
      --------------------------------------------------------- */
+  /* AI-ASSISTED COMMENTS: The explanations below were written with the help of
+     an AI assistant (Claude) so our team can understand the logic and syntax. */
+
+  // Lookup table: month abbreviation -> month number used by JavaScript Date.
+  // NOTE: JS months start at 0, so Jan = 0 and Dec = 11 (not 1 and 12).
   var MONTHS = { jan: 0, feb: 1, mar: 2, apr: 3, may: 4, jun: 5,
                  jul: 6, aug: 7, sep: 8, oct: 9, nov: 10, dec: 11 };
 
+  // Returns "" when the travel date is fine, or an error message when it is not.
   function validateTravelDate() {
+    // Step 1: read the date text that is currently shown on the page
     var el = document.getElementById("date-range");
-    var text = el ? el.textContent : "";
+    var text = el ? el.textContent : ""; // if the element is missing, use empty text
 
-    // Pattern: "<Day>, <Mon> <d> – <Day>, <Mon> <d>, <yyyy>"
+    // Step 2: pull the pieces out of the text with a regular expression (regex).
+    // Example text: "Sat, Nov 28 – Mon, Nov 30, 2026"
+    // How to read the regex:
+    //   ^\s*            start of text, ignore leading spaces
+    //   \w{3},\s*       a 3-letter weekday and a comma        ("Sat, ")
+    //   (\w{3})         GROUP 1: start month                  ("Nov")
+    //   \s+(\d{1,2})    GROUP 2: start day, 1 or 2 digits     ("28")
+    //   \s*[\u2013\-]\s*  a dash: "–" (en dash, \u2013) or "-" (hyphen)
+    //   \w{3},\s*       end weekday and a comma               ("Mon, ")
+    //   (\w{3})         GROUP 3: end month                    ("Nov")
+    //   \s+(\d{1,2}),   GROUP 4: end day, then a comma        ("30,")
+    //   \s*(\d{4})      GROUP 5: 4-digit year                 ("2026")
+    // The parentheses "capture" each part so we can read it later as m[1], m[2], ...
     var m = text.match(/^\s*\w{3},\s*(\w{3})\s+(\d{1,2})\s*[\u2013\-]\s*\w{3},\s*(\w{3})\s+(\d{1,2}),\s*(\d{4})/);
+
+    // match() returns null when the text does not fit the pattern
     if (!m) return "Please choose a travel date.";
 
-    var startMonth = MONTHS[m[1].toLowerCase()];
-    var endYear = Number(m[5]);
-    // If the trip starts in December and ends in January, the start year is one less
+    // Step 3: build a real Date object for the trip's START day
+    var startMonth = MONTHS[m[1].toLowerCase()]; // "Nov" -> "nov" -> 10
+    var endYear = Number(m[5]);                  // the text only shows the END year
+
+    // If the trip starts in December and ends in January, the start month number (11)
+    // is bigger than the end month number (0). That means the start was last year.
     var startYear = (startMonth > MONTHS[m[3].toLowerCase()]) ? endYear - 1 : endYear;
+
+    // new Date(year, monthIndex, day)
     var start = new Date(startYear, startMonth, Number(m[2]));
 
+    // Step 4: get "today" with the time set to 00:00:00 so we compare DATES only,
+    // not hours/minutes. (Without this, today at 9am would count as "past" vs midnight.)
     var today = new Date();
     today.setHours(0, 0, 0, 0);
 
+    // An invalid Date gives NaN from getTime(), so isNaN() catches bad dates
     if (isNaN(start.getTime())) return "Please choose a valid travel date.";
+
+    // Date objects can be compared with < and > (JS compares their timestamps)
     if (start < today) return "Travel date cannot be in the past.";
 
-    // The slot banner turns red (.is-invalid) when the group does not fit / schedule is full
+    // Step 5: the slots banner is turned red (.is-invalid) by updateBanner()
+    // when the schedule is full or the group is too big. We reuse that result here.
     var slots = document.querySelector(".slots-badge");
     if (slots && slots.classList.contains("is-invalid")) {
       return "This schedule cannot fit your group. Please choose another date.";
     }
-    return "";
+
+    return ""; // empty string = no error, the date is valid
   }
 
   /* ---------------------------------------------------------
@@ -426,21 +447,47 @@
     var pendingStart;   // the date highlighted while the popup is open
     var viewYear, viewMonth; // the month the calendar is showing
 
+    /* AI-ASSISTED COMMENTS: The explanations in the calendar section were written
+       with the help of an AI assistant (Claude) to help our team understand the
+       logic and syntax. */
+
+    // --- Small helper functions used by the calendar ---
+
+    // Adds a leading zero to single digits: 5 -> "05" (used to build "2026-11-05")
     function pad(n) { return n < 10 ? "0" + n : "" + n; }
+
+    // Turns a Date into a text key like "2026-11-28".
+    // Used to look dates up in SLOT_OVERRIDES and to compare two dates.
     function dateKey(d) { return d.getFullYear() + "-" + pad(d.getMonth() + 1) + "-" + pad(d.getDate()); }
+
+    // Returns a NEW date n days after d. JS handles month/year rollover for us
+    // (e.g. Nov 30 + 1 day = Dec 1). The original date is not changed.
     function addDays(d, n) { return new Date(d.getFullYear(), d.getMonth(), d.getDate() + n); }
+
+    // Two Date objects are never "==" even if they are the same day (objects are
+    // compared by reference), so we compare their text keys instead.
     function sameDay(a, b) { return dateKey(a) === dateKey(b); }
+
+    // "November" -> "Nov" (first 3 letters)
     function monthShort(d) { return MONTH_NAMES[d.getMonth()].slice(0, 3); }
+
+    // Today's date with the time removed (00:00), so it can be compared with calendar days
     function todayDate() { var t = new Date(); return new Date(t.getFullYear(), t.getMonth(), t.getDate()); }
 
     // Trip length of the chosen package: "3D / 2N" -> 3 days, 2 nights
+    // parseInt("3D / 2N", 10) reads the leading number and stops at the "D".
+    // For nights: split("/") gives ["3D ", " 2N"], and [1] is " 2N" -> 2.
     function tripDays() { return parseInt(PACKAGES[currentPkg].dur, 10); }
     function tripNights() { return parseInt(PACKAGES[currentPkg].dur.split("/")[1], 10); }
 
-    // Slots left on a date, or null when nothing departs that day
+    // Slots left on a date, or null when nothing departs that day.
+    //   null -> not a departure day (only Saturdays depart)
+    //   0    -> full
+    //   > 0  -> number of slots left
     function slotsLeft(d) {
-      if (d.getDay() !== DEPARTURE_WEEKDAY) return null;
+      if (d.getDay() !== DEPARTURE_WEEKDAY) return null; // getDay(): 0 = Sun ... 6 = Sat
       var key = dateKey(d);
+      // Use the special value in SLOT_OVERRIDES if this date has one, otherwise the default (10)
       return SLOT_OVERRIDES.hasOwnProperty(key) ? SLOT_OVERRIDES[key] : DEFAULT_SLOTS;
     }
 
@@ -479,18 +526,24 @@
       }
     }
 
-    // Draw the month grid and the summary box inside the popup
+    // Draws the whole calendar popup. It is called every time something changes
+    // (month changed, a date was clicked, group size or package changed).
+    // It rebuilds the grid from scratch each time, so there is no "old state" to clean up.
     function renderCalendar() {
       var grid = document.querySelector(".cal-grid");
-      if (!grid) return;
+      if (!grid) return; // popup is not on this page, stop
+
       var today = todayDate();
-      var n = Number(sizeEl.value) || 1;
-      var selEnd = addDays(pendingStart, tripDays() - 1);
+      var n = Number(sizeEl.value) || 1;               // group size (fall back to 1)
+      var selEnd = addDays(pendingStart, tripDays() - 1); // last day of the highlighted trip
 
+      // Show the month name, e.g. "November 2026"
       document.querySelector(".cal-month").textContent = MONTH_NAMES[viewMonth] + " " + viewYear;
-      grid.innerHTML = "";
+      grid.innerHTML = ""; // clear the old days before drawing new ones
 
-      // empty cells so day 1 lands under the right weekday
+      // ---- PART 1: empty cells before day 1 ----
+      // If the 1st falls on a Wednesday (getDay() = 3), we need 3 blank cells
+      // so the "1" lines up under WED.
       var firstDay = new Date(viewYear, viewMonth, 1).getDay();
       for (var b = 0; b < firstDay; b++) {
         var blank = document.createElement("span");
@@ -498,44 +551,61 @@
         grid.appendChild(blank);
       }
 
+      // ---- PART 2: one cell for every day of the month ----
+      // new Date(year, month + 1, 0) = "day 0 of next month" = LAST day of this month.
       var daysInMonth = new Date(viewYear, viewMonth + 1, 0).getDate();
+
       for (var day = 1; day <= daysInMonth; day++) {
+        // This is an IIFE (Immediately Invoked Function Expression): a function that
+        // runs right away. We use it so each loop round keeps its OWN copy of "d".
+        // Without it, the click handlers below would all see the last value of "day".
         (function (d) {
           var cell = document.createElement("span");
           cell.className = "cal-day";
-          var left = slotsLeft(d);
-          var small = null;
-          var selectable = false;
+
+          var left = slotsLeft(d);   // null / 0 / number (see slotsLeft above)
+          var small = null;          // small text under the number, e.g. "10 left"
+          var selectable = false;    // can the user click this day?
+
+          // Is this day inside the currently highlighted trip? (Dates compare with >= and <=)
           var inSelection = d >= pendingStart && d <= selEnd;
 
+          // ---- Decide how this day looks. Only ONE of these branches runs. ----
           if (inSelection) {
-            // the highlighted trip: dark ends, light middle
+            // Highlighted trip: first and last day are dark, middle days are light
             var isStart = sameDay(d, pendingStart);
             var isEnd = sameDay(d, selEnd);
             cell.classList.add(isStart || isEnd ? "is-selected-edge" : "is-selected-mid");
-            if (isStart) cell.classList.add("range-start");
-            if (isEnd) cell.classList.add("range-end");
+            if (isStart) cell.classList.add("range-start"); // rounded left corners
+            if (isEnd) cell.classList.add("range-end");     // rounded right corners
             if (isStart && left !== null) small = left + " left";
+
           } else if (left !== null && d >= today) {
+            // A departure day (Saturday) that is today or in the future
             if (left === 0) {
-              cell.classList.add("is-full");       // full / closed
+              cell.classList.add("is-full");   // no slots: grey, cannot click
               small = "Full";
             } else if (left < n) {
-              cell.classList.add("is-low");        // not enough slots for this group
+              cell.classList.add("is-low");    // some slots, but fewer than the group size
               small = left + " left";
             } else {
-              selectable = true;                   // available departure
+              selectable = true;               // enough slots: green, clickable
               cell.style.background = "#dff0ea";
               cell.style.color = "var(--color-primary)";
               cell.style.borderRadius = "12px";
               small = left + " left";
             }
+            // Full / low days also get rounded corners to match the available ones
             if (selectable === false) cell.style.borderRadius = "12px";
           }
+          // Any other day (not a Saturday, or in the past) keeps the default plain style.
 
+          // Mark today with a gold ring (unless it is already part of the highlighted trip)
           if (sameDay(d, today) && !inSelection) cell.classList.add("is-today");
 
+          // ---- Fill the cell's content ----
           if (small) {
+            // Two lines: the day number, and the small "X left" text under it
             var num = document.createElement("span");
             num.textContent = d.getDate();
             var sm = document.createElement("small");
@@ -543,39 +613,48 @@
             cell.appendChild(num);
             cell.appendChild(sm);
           } else {
-            cell.textContent = d.getDate();
+            cell.textContent = d.getDate(); // just the number
           }
 
+          // ---- Make available days clickable (mouse AND keyboard) ----
           if (selectable) {
-            cell.setAttribute("role", "button");
-            cell.setAttribute("tabindex", "0");
+            cell.setAttribute("role", "button"); // tells screen readers it acts like a button
+            cell.setAttribute("tabindex", "0");  // lets the Tab key focus it
             cell.style.cursor = "pointer";
+
+            // Clicking sets the new highlighted start date, then redraws the calendar
             var pick = function () { pendingStart = d; renderCalendar(); };
             cell.addEventListener("click", pick);
             cell.addEventListener("keydown", function (e) {
               if (e.key === "Enter" || e.key === " ") { e.preventDefault(); pick(); }
             });
           }
-          grid.appendChild(cell);
-        })(new Date(viewYear, viewMonth, day));
+
+          grid.appendChild(cell); // add the finished cell to the calendar
+        })(new Date(viewYear, viewMonth, day)); // <- the IIFE is called here with that day's Date
       }
 
-      // back / forward buttons: stay between this month and 12 months ahead
+      // ---- PART 3: previous / next month buttons ----
+      // Months are turned into one number (year * 12 + month) so they are easy to compare.
+      // The user may only browse from this month up to 12 months ahead.
       var navBtns = document.querySelectorAll(".cal-nav-btn");
       var minIndex = today.getFullYear() * 12 + today.getMonth();
       var viewIndex = viewYear * 12 + viewMonth;
-      navBtns[0].disabled = viewIndex <= minIndex;
-      navBtns[1].disabled = viewIndex >= minIndex + 12;
-      navBtns[0].style.opacity = navBtns[0].disabled ? "0.4" : "1";
+      navBtns[0].disabled = viewIndex <= minIndex;       // "previous": off at the current month
+      navBtns[1].disabled = viewIndex >= minIndex + 12;  // "next": off 12 months ahead
+      navBtns[0].style.opacity = navBtns[0].disabled ? "0.4" : "1"; // faded when disabled
       navBtns[1].style.opacity = navBtns[1].disabled ? "0.4" : "1";
 
-      // green summary box at the bottom of the popup
+      // ---- PART 4: green summary box at the bottom of the popup ----
       var left2 = slotsLeft(pendingStart);
       var sameMonth = pendingStart.getMonth() === selEnd.getMonth();
+      // Short range text: "Nov 28–30, 2026" or, if it crosses months, "Nov 28–Dec 1, 2026"
       var shortRange = monthShort(pendingStart) + " " + pendingStart.getDate() + "–" +
                        (sameMonth ? "" : monthShort(selEnd) + " ") + selEnd.getDate() + ", " + selEnd.getFullYear();
+      // Line 1: dates and slots left (uses "slot" for 1, "slots" otherwise)
       document.querySelector(".cal-summary-main").textContent =
         shortRange + " · " + left2 + (left2 === 1 ? " slot" : " slots") + " left";
+      // Line 2: weekdays, trip length, and whether it fits the group
       document.querySelector(".cal-summary-sub").textContent =
         WEEKDAYS[pendingStart.getDay()] + "–" + WEEKDAYS[selEnd.getDay()] + " · " +
         tripDays() + " Days / " + tripNights() + " Nights · fits your group of " + n;
