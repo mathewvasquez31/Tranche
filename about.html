@@ -4,10 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="About Celestia Travels and Tours.">
-  <title>About | Celestia Travels and Tours</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;1,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <title>Home | Celestia Travels and Tours</title>
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body class="home-page">
@@ -19,16 +16,21 @@
       <img src="assets/homepage/teyvat_logo_light.png" alt="Celestia Travels and Tours logo" class="logo-img">
     </a>
 
+    <!-- NAVBAR MOBILE VIEW: hamburger toggle. -->  
+    <input type="checkbox" id="nav-check" class="nav-check" aria-label="Toggle navigation menu">
+    <label for="nav-check" class="nav-toggle" aria-hidden="true"><span></span><span></span><span></span></label>
+
     <nav class="nav" aria-label="Main">
       <a href="#home">Home</a>
       <a href="#about">About</a>
       <a href="#destinations">Destinations</a>
       <a href="#reviews">Reviews</a>
-      <a href="#faqs">FAQs</a>
       <a href="#contact">Contact</a>
+      <a href="#faqs">FAQs</a>
+      
     </nav>
 
-    <a href="" class="book-btn">Book a Trip →</a>
+    <a href="#trip-status-modal" class="book-btn">Check Your Trip Status →</a>
 
   </header>
 
@@ -70,7 +72,7 @@
       <img src="assets/homepage/Landing Page/balloon.png" alt="" class="deco deco-balloon">
       <img src="assets/homepage/Landing Page/ship.png" alt="" class="deco deco-ship">
 
-      <h2 class="home-title gold">Teyvat Destination Packages</h2>
+      <h2 class="home-title gold">Celestia Destination Packages</h2>
       <p class="section-sub">Explore different travel packages designed around the destinations and attractions of each nation.</p>
 
       <div class="nation-grid">
@@ -118,8 +120,8 @@
         <div class="director-body">
           <p class="eyebrow">Meet your director</p>
           <h2 class="director-name">Paimon</h2>
-          <p class="role">Founder and Director, Teyvat Travel Services Agency</p>
-          <p class="bio">Hi, I'm Paimon, your absolute best travel companion and the super-genius founder of Teyvat's number one adventure agency! Stick with me, and I guarantee we'll explore the most breathtaking sights, discover the shiniest hidden treasures, and—most importantly—eat the most delicious local food across all seven nations!</p>
+          <p class="role">Founder and Director, Celestia Travels and Tours</p>
+          <p class="bio">Hi, I'm Paimon, your absolute best travel companion and the super-genius founder of Celestia's number one adventure agency! Stick with me, and I guarantee we'll explore the most breathtaking sights, discover the shiniest hidden treasures, and—most importantly—eat the most delicious local food across all seven nations!</p>
           <p class="pill">“Follow Paimon — she knows every shortcut!”</p>
         </div>
 
@@ -175,6 +177,101 @@
       </div>
 
     </section>
+    
+    <!-- ---------- CONTACT ---------- -->
+    <section class="contact" id="contact">
+
+      <div class="contact-layout">
+
+        <div class="contact-info">
+
+          <div>
+            <h2 class="home-title">Contact us</h2>
+            <p class="contact-intro">Let's turn your dream Teyvacation into reality and more!<br>Tell us your thoughts and we will make things happen.</p>
+          </div>
+
+          <div>
+            <h3 class="contact-label">Find us</h3>
+            <p class="contact-pill">
+              <img src="assets/homepage/Landing Page/location.png" alt="" class="contact-icon">
+              Celestia, Teyvat
+            </p>
+          </div>
+
+          <div>
+            <h3 class="contact-label">Email us</h3>
+            <a href="mailto:celestiatravelsandtours@gmail.com" class="contact-pill">
+              <img src="assets/homepage/Landing Page/mail.png" alt="" class="contact-icon">
+              celestiatravelsandtours@gmail.com
+            </a>
+          </div>
+
+          <div>
+            <h3 class="contact-label">Our socials</h3>
+            <div class="social">
+              <a href="#" class="social-icon" aria-label="Facebook"><img src="assets/homepage/Landing Page/Facebook.png" alt=""></a>
+              <a href="#" class="social-icon" aria-label="Instagram"><img src="assets/homepage/Landing Page/Instagram.png" alt=""></a>
+              <a href="#" class="social-icon" aria-label="TikTok"><img src="assets/homepage/Landing Page/TikTok.png" alt=""></a>
+              <a href="#" class="social-icon" aria-label="X"><img src="assets/homepage/Landing Page/X (Twitter).png" alt=""></a>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Inquiry form -->
+        <form class="contact-form" id="contact-form" novalidate>
+
+          <div class="contact-field">
+            <label for="contact-name">Full name</label>
+            <input type="text" id="contact-name" name="name" placeholder="Your full name" autocomplete="name" required aria-describedby="contact-name-error">
+            <p class="field-error" id="contact-name-error" aria-live="polite"></p>
+          </div>
+
+          <div class="contact-row">
+
+            <div class="contact-field">
+              <label for="contact-phone">Mobile number</label>
+              <input type="tel" id="contact-phone" name="phone" placeholder="(+63) 912 345 6789" autocomplete="tel" required aria-describedby="contact-phone-error">
+              <p class="field-error" id="contact-phone-error" aria-live="polite"></p>
+            </div>
+
+            <div class="contact-field">
+              <label for="contact-email">Email address</label>
+              <input type="email" id="contact-email" name="email" placeholder="Your email address" autocomplete="email" required aria-describedby="contact-email-error">
+              <p class="field-error" id="contact-email-error" aria-live="polite"></p>
+            </div>
+
+          </div>
+
+          <div class="contact-field">
+            <label for="contact-type">Inquiry type</label>
+            <div class="select-wrap">
+              <select id="contact-type" name="inquiry_type" required aria-describedby="contact-type-error">
+                <option value="" disabled selected>Choose inquiry type here</option>
+                <option value="package-details">Package Inquiry</option>
+                <option value="booking-help">Booking Concern</option>
+                <option value="payment-refund">Payments</option>
+                <option value="custom-trip">General Inquiry</option>
+              </select>
+            </div>
+            <p class="field-error" id="contact-type-error" aria-live="polite"></p>
+          </div>
+
+          <div class="contact-field">
+            <label for="contact-message">Message</label>
+            <textarea id="contact-message" name="message" placeholder="Your message here" required aria-describedby="contact-message-error"></textarea>
+            <p class="field-error" id="contact-message-error" aria-live="polite"></p>
+          </div>
+
+          <button type="submit" class="contact-submit">Send Inquiry <span aria-hidden="true">&rarr;</span></button>
+          <p class="contact-status" id="contact-status" role="status" hidden></p>
+
+        </form>
+
+      </div>
+
+    </section>
+
 
     <!-- ---------- FAQ ---------- -->
     <section class="faq" id="faqs">
@@ -209,9 +306,39 @@
 
   </main>
 
+  <!------------- (MODAL) CHECK YOUR TRIP STATUS ------------->
+<div class="modal-overlay trip-modal" id="trip-status-modal" role="dialog" aria-modal="true" aria-labelledby="trip-modal-title">
+  <div class="modal-card">
+    <div class="modal-card-inner">
+      <a href="#!" class="modal-close" aria-label="Close modal">&times;</a>
+
+      <p class="eyebrow">Returning traveler</p>
+      <h2 class="modal-title" id="trip-modal-title">Check Your Trip Status</h2>
+      <p class="modal-desc">Enter the booking reference and the email address used when you submitted your request.</p>
+
+      <form class="trip-form" action="booking-status.html" method="get">
+        <div class="form-row">
+          <div class="form-field">
+            <label for="trip-ref">Booking Reference <span class="required">*</span></label>
+            <input class="form-input" type="text" id="trip-ref" name="ref" placeholder="CEL-7K2QX9" maxlength="20" required>
+            <p class="form-hint">Reference code from your booking confirmation.</p>
+          </div>
+
+          <div class="form-field">
+            <label for="trip-email">Email Address <span class="required">*</span></label>
+            <input class="form-input" type="email" id="trip-email" name="email" placeholder="Your email address" maxlength="100" required>
+            <p class="form-hint">Email you used to book a date.</p>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-dark trip-submit">Find My Booking &rarr;</button>
+      </form>
+    </div>
+  </div>
+</div>
 
   <!-- ---------- FOOTER ---------- -->
-  <footer class="footer" id="contact"
+  <footer class="footer" id="footer">
 
     <div class="footer-top">
 
@@ -227,15 +354,17 @@
           <a href="#" class="social-icon" aria-label="TikTok"><img src="assets/homepage/Landing Page/TikTok.png" alt=""></a>
           <a href="#" class="social-icon" aria-label="X"><img src="assets/homepage/Landing Page/X (Twitter).png" alt=""></a>
         </div>
-        <p>Email: celestiatravels&tours@gmail.com</p>
+        <p>Email: celestiatravels&amp;tours@gmail.com</p>
         <p>Location: Celestia, Teyvat</p>
       </div>
 
     </div>
 
-    <p class="copyright">© 2026 Celestia Travels and Tours. All rights reserved.</p>
-
+    <p class="copyright">© 2026 Celestia Travels and Tours. All rights reserved. </p>
+    
   </footer>
+
+  <script src="js/script.js" defer></script>
 
 </body>
 </html>

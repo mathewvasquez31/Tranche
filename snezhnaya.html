@@ -3,13 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Explore Snezhnaya with Teyvat Travel Agency: featured stops, local cuisine, and a 4-day, 3-night tour package.">
-  <title>Snezhnaya | Teyvat Travel Agency</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;1,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <meta name="description" content="Explore Snezhnaya with Celestia Travels and Tours: featured stops, local cuisine, and a 5-day, 4-night tour package.">
+  <title>Snezhnaya | Celestia Travels and Tours</title>
   <link rel="stylesheet" href="css/styles.css">
-<body class="snezhnaya">
+</head>
+<body>
 
   <!-- ---------- HEADER ---------- -->
   <header class="header">
@@ -18,6 +16,10 @@
       <img src="assets/homepage/teyvat_logo_light.png" alt="Celestia Travels and Tours logo" class="logo-img">
     </a>
 
+    <!-- NAVBAR MOBILE VIEW: hamburger toggle. -->
+    <input type="checkbox" id="nav-check" class="nav-check" aria-label="Toggle navigation menu">
+    <label for="nav-check" class="nav-toggle" aria-hidden="true"><span></span><span></span><span></span></label>
+    
     <nav class="nav" aria-label="Main">
       <a href="about.html">Home</a>
       <a href="#about">About</a>
@@ -26,7 +28,7 @@
       <a href="#contact">Contact</a>
     </nav>
 
-    <a href="" class="book-btn">Book a Trip →</a>
+    <a href="#trip-status-modal" class="book-btn">Check Your Trip Status →</a>
 
   </header>
 
@@ -35,7 +37,7 @@
     <!-- ============ HERO ============ -->
     <section class="hero" id="home" style="background-image: url('assets/snezhnaya/snezhnaya.png');">
       <div class="hero-content">
-        <img class="hero-icon" src="assets/snezhnaya/cryo element.png" alt="">
+        <img class="hero-icon" src="assets/snezhnaya/cryo element.png" alt="cryo symbol">
         <h1 class="hero-title">SNEZHNAYA</h1>
         <p class="hero-tagline">Beneath the Aurora, Winter Reigns.</p>
       </div>
@@ -45,11 +47,12 @@
     <section class="about" id="about">
       <div class="container">
         <h2 class="section-title">
-          <img class="title-icon" src="assets/snezhnaya/cryo element.png" alt="">
+          <img class="title-icon" src="assets/snezhnaya/cryo element.png" alt="cryo symbol">
           About the Nation of Love
         </h2>
         <p class="about-text">
           Known for its frost-bound architecture, imposing palaces, and unyielding winter grandeur, Snezhnaya is a formidable northern nation ruled by the Cryo Archon, the Tsaritsa. Explore towering ice fortresses, sprawling glacial valleys, remote outposts, and warm alpine hospitality beneath dancing auroras.
+        </p>  
       </div>
     </section>
 
@@ -57,22 +60,22 @@
     <section class="stops" id="featured-stops">
       <div class="container">
         <h2 class="section-title">
-          <img class="title-icon" src="assets/snezhnaya/cryo element.png" alt="">
+          <img class="title-icon" src="assets/snezhnaya/cryo element.png" alt="cryo symbol">
           Featured Stops
         </h2>
 
         <div class="stops-grid">
 
           <article class="stop-card">
-            <img src="assets/snezhnaya/zapolyarny.png" alt="Zapolyarny Palace: The imposing edges of the Tsaritsa's seat of power." loading="lazy">
+            <img src="assets/snezhnaya/zapolyarny.png" alt="Zapolyarny Palace" loading="lazy">
           </article>
 
           <article class="stop-card">
-            <img src="assets/snezhnaya/korolevskiy.png" alt="Korolevskiy Theater: Experience world-class performances within this lavish royal venue.." loading="lazy">
+            <img src="assets/snezhnaya/korolevskiy.png" alt="Korolevskiy Theater" loading="lazy">
           </article>          
           
           <article class="stop-card">
-            <img src="assets/snezhnaya/borderland.png" alt="Borderland Town: Relax in cozy alpine chalets on the snowy frontier." loading="lazy">
+            <img src="assets/snezhnaya/borderland.png" alt="Borderland Town" loading="lazy">
           </article>
 
         </div>
@@ -88,8 +91,8 @@
 
           <div class="package-info">
             <div class="package-header">
-              <img class="title-icon" src="assets/snezhnaya/cryo element.png" alt="">
-              <h2 class="package-title">Tour Package (SNEZ-07)</h2>
+              <img class="title-icon" src="assets/snezhnaya/cryo element.png" alt="cryo symbol">
+              <h2 class="package-title">Tour Package</h2>
               <span class="package-badge">5D / 4N</span>
             </div>
 
@@ -103,18 +106,49 @@
               <li>Travel assistance &amp; support</li>
             </ul>
 
-            <a href="" class="btn btn-dark">Book Now! &rarr;</a>
+            <a href="booking.html" class="btn btn-dark">Book Now! &rarr;</a>
           </div>
 
-          <img class="package-emblem" src="assets/snezhnaya/watermark-sigil-6.png" alt="" loading="lazy">
+          <img class="package-emblem" src="assets/snezhnaya/watermark-sigil-6.png" alt="sigil" loading="lazy">
         </div>
       </div>
     </section>
 
   </main>
 
+  <!------------- (MODAL) CHECK YOUR TRIP STATUS ------------->
+<div class="modal-overlay trip-modal" id="trip-status-modal" role="dialog" aria-modal="true" aria-labelledby="trip-modal-title">
+  <div class="modal-card">
+    <div class="modal-card-inner">
+      <a href="#!" class="modal-close" aria-label="Close modal">&times;</a>
+
+      <p class="eyebrow">Returning traveler</p>
+      <h2 class="modal-title" id="trip-modal-title">Check Your Trip Status</h2>
+      <p class="modal-desc">Enter the booking reference and the email address used when you submitted your request.</p>
+
+      <form class="trip-form" action="booking-status.html" method="get">
+        <div class="form-row">
+          <div class="form-field">
+            <label for="trip-ref">Booking Reference <span class="required">*</span></label>
+            <input class="form-input" type="text" id="trip-ref" name="ref" placeholder="CEL-7K2QX9" maxlength="20" required>
+            <p class="form-hint">Reference code from your booking confirmation.</p>
+          </div>
+
+          <div class="form-field">
+            <label for="trip-email">Email Address <span class="required">*</span></label>
+            <input class="form-input" type="email" id="trip-email" name="email" placeholder="Your email address" maxlength="100" required>
+            <p class="form-hint">Email you used to book a date.</p>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-dark trip-submit">Find My Booking &rarr;</button>
+      </form>
+    </div>
+  </div>
+</div>
+
   <!-- ---------- FOOTER ---------- -->
-  <footer class="footer" id="contact"
+  <footer class="footer" id="contact">
 
     <div class="footer-top">
 
@@ -130,13 +164,14 @@
           <a href="#" class="social-icon" aria-label="TikTok"><img src="assets/homepage/Landing Page/TikTok.png" alt=""></a>
           <a href="#" class="social-icon" aria-label="X"><img src="assets/homepage/Landing Page/X (Twitter).png" alt=""></a>
         </div>
-        <p>Email: celestiatravels&tours@gmail.com</p>
+        <p>Email: celestiatravels&amp;tours@gmail.com</p>
         <p>Location: Celestia, Teyvat</p>
       </div>
 
     </div>
 
-    <p class="copyright">© 2026 Celestia Travels and Tours. All rights reserved.</p>
+    <p class="copyright">© 2026 Celestia Travels and Tours. All rights reserved. 
+    </p>
 
   </footer>
 

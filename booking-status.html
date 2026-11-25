@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Check the status of your Celestia Travels and Tours booking request.">
+<title>Booking Status | Celestia Travels and Tours</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;1,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="booking-page status-page">
+
+<!-- ---------- HEADER ---------- -->
+<header class="header">
+
+  <a href="about.html" class="logo">
+    <img src="assets/homepage/teyvat_logo_light.png" alt="Celestia Travels and Tours logo" class="logo-img">
+  </a>
+
+  <!-- NAVBAR MOBILE VIEW: hamburger toggle. -->
+  <input type="checkbox" id="nav-check" class="nav-check" aria-label="Toggle navigation menu">
+  <label for="nav-check" class="nav-toggle" aria-hidden="true"><span></span><span></span><span></span></label>
+
+  <nav class="nav" aria-label="Main">
+    <a href="about.html#home">Home</a>
+    <a href="about.html#about">About</a>
+    <a href="about.html#destinations">Destinations</a>
+    <a href="about.html#reviews">Reviews</a>
+    <a href="about.html#faqs">FAQs</a>
+    <a href="about.html#contact">Contact</a>
+  </nav>
+
+  <a href="#trip-status-modal" class="book-btn">Check Your Trip Status →</a>
+
+</header>
+
+<main>
+
+  <!------------- HERO ------------->
+  <section class="status-hero" id="home">
+    <p class="eyebrow">Manage your journey</p>
+    <h1 class="status-hero-title">Booking Status</h1>
+    <p class="status-hero-tagline">Check the status of your request and see what happens next.</p>
+  </section>
+
+  <!--------- BOOKING STATUS CARD ---------->
+  <section class="booking status-section" id="status">
+    <div class="container">
+      <div class="status-card">
+        <div class="status-card-inner">
+
+          <!----- REFERENCE + STATUS PILL ----->
+          <div class="status-top">
+            <div>
+              <p class="status-ref-label">Booking Reference</p>
+              <p class="status-ref-number">CEL-7K2QX9</p>
+            </div>
+            <span class="status-pill">Status: Pending</span>
+          </div>
+
+          <!----- PROGRESS STEPPER ----->
+          <ol class="stepper" aria-label="Booking progress">
+            <li class="stepper-item is-current" aria-current="step">
+              <span class="stepper-dot">1</span>
+              <span class="stepper-label">Reviewing Request</span>
+              <span class="stepper-sub">Current step</span>
+            </li>
+            <li class="stepper-item">
+              <span class="stepper-dot">2</span>
+              <span class="stepper-label">Awaiting Payment</span>
+            </li>
+            <li class="stepper-item">
+              <span class="stepper-dot">3</span>
+              <span class="stepper-label">Payment Review</span>
+            </li>
+            <li class="stepper-item">
+              <span class="stepper-dot">4</span>
+              <span class="stepper-label">Confirmed</span>
+            </li>
+            <li class="stepper-item">
+              <span class="stepper-dot">5</span>
+              <span class="stepper-label">Completed</span>
+            </li>
+          </ol>
+
+          <!----- 1. YOUR BOOKING STATUS ----->
+          <div class="form-section">
+            <h3 class="form-heading">
+              <span class="step-num">1</span>
+              Your Booking Status
+            </h3>
+
+            <div class="status-message">
+              <h4 class="status-message-title">Your booking request is under review</h4>
+              <p>Thank you, Maria! The Director is reviewing your request. Once it is approved, your payment instructions and deadline will appear on this page and be sent to your email. Please get your payment ready so you can pay as soon as it is approved.</p>
+            </div>
+          </div>
+
+          <!----- 2. BOOKING DETAILS ----->
+          <div class="form-section">
+            <h3 class="form-heading">
+              <span class="step-num">1</span>
+              Booking Details
+            </h3>
+
+            <dl class="details-box">
+              <div class="details-col">
+                <div class="details-item"><dt>Name</dt><dd>Maria Santos</dd></div>
+                <div class="details-item"><dt>Mobile Number</dt><dd>0917 123 4567</dd></div>
+                <div class="details-item"><dt>Email</dt><dd>maria.santos@gmail.com</dd></div>
+              </div>
+
+              <div class="details-col">
+                <div class="details-item"><dt>Nation / Tour Package</dt><dd>Mondstadt, 3D2N</dd></div>
+                <div class="details-item"><dt>Travel Dates</dt><dd>Sat, Nov 28 to Mon, Nov 30, 2026</dd></div>
+                <div class="details-item"><dt>Group Size</dt><dd>2 travelers</dd></div>
+                <div class="details-item"><dt>Special Request</dt><dd>None</dd></div>
+                <div class="details-item"><dt>Submitted</dt><dd>Nov 20, 2026</dd></div>
+              </div>
+
+              <div class="details-col">
+                <div class="details-item"><dt>Price</dt><dd>₱12,500 per person</dd></div>
+                <div class="details-item"><dt>Total Amount</dt><dd>₱25,000</dd></div>
+              </div>
+            </dl>
+          </div>
+
+          <!----- 3. WHAT HAPPENS NEXT ----->
+          <div class="form-section">
+            <h3 class="form-heading">
+              <span class="step-num">2</span>
+              What happens next
+            </h3>
+
+            <ol class="next-steps">
+              <li>The Director reviews your request and either approves or declines it.</li>
+              <li>If approved, your payment instructions and deadline appear here and in your email.</li>
+              <li>After you pay, upload your proof of payment on this page for verification.</li>
+            </ol>
+          </div>
+
+          <!----- 4. PAYMENT PROOF UPLOAD ----->
+          <div class="form-section">
+            <h3 class="form-heading">
+              <span class="step-num">3</span>
+              Payment Proof Upload
+            </h3>
+
+            <p class="payment-note" role="status">Note: Payment actions are locked until the Director approves your request.</p>
+
+            <p class="payment-label">Select payment channels</p>
+            <div class="payment-channels">
+              <button class="channel-chip" type="button" disabled>GCash</button>
+              <button class="channel-chip" type="button" disabled>Bank Transfer</button>
+            </div>
+
+            <div class="payment-due">
+              <div>
+                <p class="payment-due-label">Full payment required</p>
+                <p class="payment-due-amount">₱25,000 due upon approval</p>
+              </div>
+              <span class="payment-locked">Locked</span>
+            </div>
+
+            <p class="payment-label">Upload proof of payment</p>
+            <div class="upload-box" aria-disabled="true">
+              <p class="upload-main">Upload payment receipt here once approved</p>
+              <p class="upload-sub">JPG, PNG, or PDF · up to 5 MB</p>
+            </div>
+          </div>
+
+          <p class="status-help">Questions about your booking? <a href="about.html#contact">Send us an inquiry.</a></p>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!------------- (MODAL) BOOKING REQUEST RECEIVED ------------->
+<!-- Opens automatically when booking.html sends the user here with #confirm-modal -->
+<div class="modal-overlay" id="confirm-modal" role="dialog" aria-modal="true" aria-labelledby="confirm-modal-title">
+  <div class="modal-card">
+    <div class="modal-card-inner modal-confirm">
+      <a href="#status" class="modal-close" aria-label="Close modal">&times;</a>
+
+      <div class="confirm-badge" aria-hidden="true"><span>&#10003;</span></div>
+
+      <h2 class="modal-title" id="confirm-modal-title">Booking Request Received!</h2>
+      <p class="modal-desc">Please keep your booking reference to check for status updates.</p>
+
+      <div class="ref-card">
+        <p class="ref-label">BOOKING REFERENCE</p>
+        <p class="ref-number">CEL-7K2QX9</p>
+      </div>
+
+      <div class="review-box">
+        <div class="review-row"><span>Package</span><strong>Mondstadt (3D/2N)</strong></div>
+        <div class="review-row"><span>Schedule</span><strong>Sat, Nov 28 – Mon, Nov 30, 2026</strong></div>
+        <div class="review-row"><span>Group Size</span><strong>2 travelers</strong></div>
+        <div class="review-row"><span>Total Amount</span><strong>₱25,000</strong></div>
+      </div>
+
+      <p class="confirm-note">
+        Once approved, view your payment instructions (GCash, Bank Transfer) and the Director's payment deadline on this page.
+      </p>
+
+      <div class="modal-actions">
+        <a href="#status" class="btn btn-dark">Done</a>
+        <a href="about.html" class="btn btn-light">Back to Home</a>
+      </div>
+
+      <img class="modal-watermark" src="assets/mondstadt/watermark-sigil.png" alt="" aria-hidden="true">
+    </div>
+  </div>
+</div>
+
+<!------------- (MODAL) CHECK YOUR TRIP STATUS ------------->
+<div class="modal-overlay trip-modal" id="trip-status-modal" role="dialog" aria-modal="true" aria-labelledby="trip-modal-title">
+  <div class="modal-card">
+    <div class="modal-card-inner">
+      <a href="#!" class="modal-close" aria-label="Close modal">&times;</a>
+
+      <p class="eyebrow">Returning traveler</p>
+      <h2 class="modal-title" id="trip-modal-title">Check Your Trip Status</h2>
+      <p class="modal-desc">Enter the booking reference and the email address used when you submitted your request.</p>
+
+      <form class="trip-form" action="booking-status.html" method="get">
+        <div class="form-row">
+          <div class="form-field">
+            <label for="trip-ref">Booking Reference <span class="required">*</span></label>
+            <input class="form-input" type="text" id="trip-ref" name="ref" placeholder="CEL-7K2QX9" maxlength="20" required>
+            <p class="form-hint">Reference code from your booking confirmation.</p>
+          </div>
+
+          <div class="form-field">
+            <label for="trip-email">Email Address <span class="required">*</span></label>
+            <input class="form-input" type="email" id="trip-email" name="email" placeholder="Your email address" maxlength="100" required>
+            <p class="form-hint">Email you used to book a date.</p>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-dark trip-submit">Find My Booking &rarr;</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- ---------- FOOTER ---------- -->
+<footer class="footer" id="footer">
+
+  <div class="footer-top">
+
+    <a href="about.html" class="logo">
+      <img src="assets/homepage/teyvat_logo_light.png" alt="Celestia Travels and Tours logo" class="logo-img footer-logo-img">
+    </a>
+
+    <div class="footer-info">
+      <span class="follow">FOLLOW US ON</span>
+      <div class="social">
+        <a href="#" class="social-icon" aria-label="Facebook"><img src="assets/homepage/Landing Page/Facebook.png" alt=""></a>
+        <a href="#" class="social-icon" aria-label="Instagram"><img src="assets/homepage/Landing Page/Instagram.png" alt=""></a>
+        <a href="#" class="social-icon" aria-label="TikTok"><img src="assets/homepage/Landing Page/TikTok.png" alt=""></a>
+        <a href="#" class="social-icon" aria-label="X"><img src="assets/homepage/Landing Page/X (Twitter).png" alt=""></a>
+      </div>
+      <p>Email: celestiatravels&amp;tours@gmail.com</p>
+      <p>Location: Celestia, Teyvat</p>
+    </div>
+
+  </div>
+
+  <p class="copyright">© 2026 Celestia Travels and Tours. All rights reserved.
+  <br>Note: Background image is AI-generated and used as the back-most, semi-transparent layer. </p>
+
+</footer>
+
+<script src="js/script.js" defer></script>
+
+</body>
+</html>

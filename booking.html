@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Book a tour with Celestia Travels and Tours: choose your nation, travel date, and group size.">
+<title>Book a Tour | Celestia Travels and Tours</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;1,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="booking-page">
+
+<!-- ---------- HEADER ---------- -->
+<header class="header">
+  <a href="about.html" class="logo">
+    <img src="assets/homepage/teyvat_logo_light.png" alt="Celestia Travels and Tours logo" class="logo-img">
+  </a>
+
+  <button class="nav-toggle" type="button" aria-label="Toggle menu" aria-expanded="false">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+
+  <nav class="nav" aria-label="Main">
+    <a href="about.html#home">Home</a>
+    <a href="about.html#about">About</a>
+    <a href="about.html#destinations">Destinations</a>
+    <a href="about.html#reviews">Reviews</a>
+    <a href="about.html#faqs">FAQs</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <a href="#trip-status-modal" class="book-btn">Check Your Trip Status →</a>
+
+</header>
+
+<main>
+
+  <!------------- HERO ------------->
+  <section class="hero booking-hero" id="home" style="background-image: url('assets/booking page/hero-banner-booking.png');">
+    <div class="hero-content">
+      <p class="eyebrow">Traveler's Ledger</p>
+      <h1 class="hero-title">Book your Tour</h1>
+      <p class="hero-tagline">Pen your name in the journal — we'll chart the rest across Teyvat.</p>
+    </div>
+  </section>
+
+  <!--------- BOOKING FORM ---------->
+  <section class="booking" id="booking">
+    <div class="container">
+      <form class="booking-card" action="#" method="post">
+        <div class="booking-card-inner">
+
+          <h2 class="booking-title">Reserve Your Journey</h2>
+
+          <!----- PERSONAL INFORMATION ----->
+          <div class="form-section">
+            <h3 class="form-heading">
+              <span class="step-num">1</span>
+              <span class="title-desktop">Personal Information</span>
+              <span class="title-mobile">Traveler details</span>
+            </h3>
+
+            <div class="form-field">
+              <label for="full-name">Full Name <span class="required">*</span></label>
+              <input class="form-input" type="text" id="full-name" name="full_name" placeholder="Your Full Name" autocomplete="name" required>
+            </div>
+
+            <div class="form-row">
+              <div class="form-field">
+                <label for="email">Email Address <span class="required">*</span></label>
+                <input class="form-input" type="email" id="email" name="email" placeholder="Your Email Address" autocomplete="email" required>
+              </div>
+
+              <div class="form-field">
+                <label for="mobile">Mobile Number <span class="required">*</span></label>
+                <input class="form-input" type="tel" id="mobile" name="mobile" placeholder="0917 123 4567" autocomplete="tel" required>
+                <p class="form-hint hint-mobile">PH format: 09XX XXX XXXX</p>
+              </div>
+            </div>
+          </div>
+
+          <!----- PACKAGE INFORMATION ----->
+          <div class="form-section">
+            <h3 class="form-heading">
+              <span class="step-num">2</span>
+              <span class="title-desktop">Package Information</span>
+              <span class="title-mobile">Your trip</span>
+            </h3>
+
+            <div class="form-field">
+              <label for="group-size">Group Size <span class="required">*</span></label>
+              <div class="group-size">
+                <button class="size-btn" type="button" data-step="-1" aria-label="Decrease group size">&minus;</button>
+                <input class="size-input" type="number" id="group-size" name="group_size" value="2" min="1" max="20" readonly>
+                <button class="size-btn" type="button" data-step="1" aria-label="Increase group size">+</button>
+              </div>
+              <p class="form-hint hint-mobile">Enter your group size — available departure dates below will check capacity automatically.</p>
+            </div>
+
+            <div class="form-field">
+            <span class="field-label">Nation / Tour Package <span class="required">*</span></span>
+            <details class="pkg-dropdown">
+                <summary class="form-input pkg-trigger">
+                <span class="pkg-trigger-text">Mondstadt · ₱12,500 / head</span>
+                </summary>
+
+                <ul class="pkg-menu" role="listbox" aria-label="Tour packages">
+                <li class="pkg-option is-selected" role="option" aria-selected="true">
+                    <span class="pkg-opt-name">Mondstadt</span>
+                    <span class="pkg-opt-meta">
+                    <span class="pkg-opt-dur">3D/2N</span>
+                    <strong class="pkg-opt-price">₱12,500</strong>
+                    </span>
+                </li>
+                <li class="pkg-option" role="option">
+                    <span class="pkg-opt-name">Liyue</span>
+                    <span class="pkg-opt-meta">
+                    <span class="pkg-opt-dur">4D/3N</span>
+                    <strong class="pkg-opt-price">₱15,000</strong>
+                    </span>
+                </li>
+                <li class="pkg-option" role="option">
+                    <span class="pkg-opt-name">Inazuma</span>
+                    <span class="pkg-opt-meta">
+                    <span class="pkg-opt-dur">4D/3N</span>
+                    <strong class="pkg-opt-price">₱18,000</strong>
+                    </span>
+                </li>
+                <li class="pkg-option" role="option">
+                    <span class="pkg-opt-name">Sumeru</span>
+                    <span class="pkg-opt-meta">
+                    <span class="pkg-opt-dur">3D/3N</span>
+                    <strong class="pkg-opt-price">₱14,000</strong>
+                    </span>
+                </li>
+                <li class="pkg-option" role="option">
+                    <span class="pkg-opt-name">Fontaine</span>
+                    <span class="pkg-opt-meta">
+                    <span class="pkg-opt-dur">5D/4N</span>
+                    <strong class="pkg-opt-price">₱20,000</strong>
+                    </span>
+                </li>
+                <li class="pkg-option" role="option">
+                    <span class="pkg-opt-name">Natlan</span>
+                    <span class="pkg-opt-meta">
+                    <span class="pkg-opt-dur">4D/3N</span>
+                    <strong class="pkg-opt-price">₱16,500</strong>
+                    </span>
+                </li>
+                <li class="pkg-option" role="option">
+                    <span class="pkg-opt-name">Snezhnaya</span>
+                    <span class="pkg-opt-meta">
+                    <span class="pkg-opt-dur">5D/4N</span>
+                    <strong class="pkg-opt-price">₱22,000</strong>
+                    </span>
+                </li>
+                </ul>
+            </details>
+            </div>
+
+            <!----- Selected package summary ----->
+            <div class="selected-package">
+              <img class="package-emblem" id="pkg-emblem" src="assets/mondstadt/watermark-sigil.png" alt="" loading="lazy">
+              <div class="selected-inner">
+                <p class="selected-label">Selected Package</p>
+                <h4 class="selected-name" id="pkg-name">Mondstadt</h4>
+                <p class="selected-tagline" id="pkg-tagline">Let the Wind Lead the Way.</p>
+                <p class="package-price" id="pkg-price">₱ 12,500 <span>/ head</span></p>
+                <span class="package-badge" id="pkg-badge">3D / 2N</span>
+                <a href="#pkg-details-modal" class="btn btn-light" id="pkg-link">View Full Package Details &rarr;</a>
+              </div>
+            </div>
+
+            <!------------- (MODAL) VIEW FULL PACKAGE DETAILS ------------->
+            <div class="modal-overlay" id="pkg-details-modal" role="dialog" aria-modal="true" aria-labelledby="modal-pkg-title">
+            <div class="modal-card">
+                <div class="modal-card-inner">
+                <a href="#booking" class="modal-close" aria-label="Close modal">&times;</a>
+
+                <div class="modal-pkg-photo-wrap">
+                    <img class="modal-pkg-photo" src="assets/mondstadt/mondstadt_tourpackagepic.png" alt="Mondstadt Tour Package">
+                </div>
+
+                <div class="modal-pkg-meta">
+                    <img class="modal-pkg-element" src="assets/mondstadt/anemo.png" alt="">
+                    <span class="modal-pkg-duration">3D / 2N</span>
+                </div>
+
+                <h2 class="modal-title" id="modal-pkg-title">Mondstadt Tour Package</h2>
+                <p class="modal-desc">Windswept plains, the Grand Cathedral and Cider Lake — a gentle three-day escape on the Anemo breeze.</p>
+                <p class="modal-pkg-price">₱ 12,500 <span>/ head</span></p>
+
+                <h3 class="modal-subheading">Featured Places / Itinerary</h3>
+                <ul class="modal-itinerary">
+                    <li><span class="day-pill">Day 1</span><span class="stop-name">Cider Lake</span></li>
+                    <li><span class="day-pill">Day 2</span><span class="stop-name">Windrise</span></li>
+                    <li><span class="day-pill">Day 3</span><span class="stop-name">Grand Cathedral of Mondstadt</span></li>
+                </ul>
+
+                <h3 class="modal-subheading">Package Inclusions</h3>
+                <ul class="modal-inclusions">
+                    <li>Round-trip transportation</li>
+                    <li>Guided tour of featured stops</li>
+                    <li>Selected local food experience</li>
+                    <li>Travel assistance &amp; support</li>
+                </ul>
+
+                <a href="#booking" class="btn btn-light modal-btn-full">Close</a>
+                <img class="modal-watermark" src="assets/mondstadt/watermark-sigil.png" alt="" aria-hidden="true">
+                </div>
+            </div>
+            </div>
+
+            <div class="form-field">
+            <span class="field-label">Travel Date / Schedule <span class="required">*</span></span>
+            <div class="date-box">
+                <span class="date-icon" aria-hidden="true"></span>
+                <p class="date-text">
+                <strong id="date-range">Sat, Nov 28 – Mon, Nov 30, 2026</strong>
+                <span id="date-length">(3D/2N)</span>
+                </p>
+                <a href="#date-modal" class="btn btn-dark btn-sm">Choose Date</a>
+            </div>
+
+            <!------------- (MODAL) CHOOSE DATE ------------->
+            <div class="modal-overlay" id="date-modal" role="dialog" aria-modal="true" aria-labelledby="date-modal-title">
+            <div class="modal-card">
+                <div class="modal-card-inner">
+                <a href="#booking" class="modal-close" aria-label="Close modal">&times;</a>
+
+                <h2 class="modal-title" id="date-modal-title">Select Date</h2>
+
+                <div class="cal-nav">
+                    <button class="cal-nav-btn" type="button" aria-label="Previous month">&#8249;</button>
+                    <h3 class="cal-month">November 2026</h3>
+                    <button class="cal-nav-btn" type="button" aria-label="Next month">&#8250;</button>
+                </div>
+
+                <div class="cal-box">
+                    <div class="cal-weekdays" aria-hidden="true">
+                    <span>SUN</span><span>MON</span><span>TUE</span><span>WED</span><span>THU</span><span>FRI</span><span>SAT</span>
+                    </div>
+                    <div class="cal-grid">
+                    <span class="cal-day">1</span><span class="cal-day">2</span><span class="cal-day">3</span><span class="cal-day">4</span><span class="cal-day">5</span><span class="cal-day">6</span><span class="cal-day">7</span>
+                    <span class="cal-day">8</span><span class="cal-day">9</span><span class="cal-day">10</span><span class="cal-day">11</span><span class="cal-day">12</span><span class="cal-day">13</span><span class="cal-day">14</span>
+                    <span class="cal-day">15</span><span class="cal-day">16</span><span class="cal-day">17</span><span class="cal-day">18</span><span class="cal-day">19</span>
+                    <span class="cal-day is-today">20</span>
+                    <span class="cal-day is-full range-start"><span>21</span><small>Full</small></span>
+                    <span class="cal-day is-full">22</span>
+                    <span class="cal-day is-full range-end">23</span>
+                    <span class="cal-day is-low range-start"><span>24</span><small>1 left</small></span>
+                    <span class="cal-day is-low">25</span>
+                    <span class="cal-day is-low range-end">26</span>
+                    <span class="cal-day">27</span>
+                    <span class="cal-day is-selected-edge range-start"><span>28</span><small>10 left</small></span>
+                    <span class="cal-day is-selected-mid">29</span>
+                    <span class="cal-day is-selected-edge range-end">30</span>
+                    </div>
+                </div>
+
+                <div class="cal-legend">
+                    <span><i class="legend-dot dot-selected"></i>Selected</span>
+                    <span><i class="legend-dot dot-available"></i>Available Departure</span>
+                    <span><i class="legend-dot dot-full"></i>Full / Closed</span>
+                    <span><i class="legend-dot dot-low"></i>Not enough slots</span>
+                    <span><i class="legend-dot dot-today"></i>Today</span>
+                </div>
+
+                <div class="cal-summary">
+                    <span class="date-icon" aria-hidden="true"></span>
+                    <div>
+                    <p class="cal-summary-main">Nov 28–30, 2026 · 10 slots left</p>
+                    <p class="cal-summary-sub">Sat–Mon · 3 Days / 2 Nights · fits your group of 2</p>
+                    </div>
+                </div>
+
+                <a href="#booking" class="btn btn-dark modal-btn-full">Confirm Date</a>
+                <img class="modal-watermark" src="assets/mondstadt/watermark-sigil.png" alt="" aria-hidden="true">
+                </div>
+            </div>
+            </div>
+
+              <!----- Slot Validation Banner ----->
+              <p class="slots-badge" role="status">10 slots remaining</p>
+              <!--
+              <p class="slots-badge is-low" role="status">Only 3 slots left</p>
+              <p class="slots-badge is-invalid" role="status">Only 2 slots left</p>
+              <p class="slots-badge is-invalid" role="status">This schedule is full</p>
+              -->
+            </div>
+          </div>
+
+          <!----- SPECIAL REQUESTS ----->
+          <div class="form-section form-section-requests">
+            <h3 class="form-heading">
+              <span class="step-num">3</span>
+              Special Requests (Optional)
+            </h3>
+            <label class="sr-only" for="requests">Special requests</label>
+            <textarea class="form-input" id="requests" name="requests" rows="4" placeholder="Dietary preferences, accessibility needs, or notes..."></textarea>
+          </div>
+
+          <!-- SUBMIT -->
+          <div class="booking-submit">
+            <p class="booking-note">Submitting creates a Pending request. Slots are held only after Director approval.</p>
+
+            <div class="booking-total">
+              <p class="total-label">Estimated Total</p>
+              <p class="total-amount" id="total-amount">₱25,000</p>
+              <p class="total-calc" id="total-calc">₱12,500 × 2 travelers</p>
+            </div>
+
+            <a href="#review-modal" class="btn btn-dark">Confirm</a>
+          </div>
+
+        </div>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+
+
+
+<!----------- (MODAL) REVIEW YOUR BOOKING ----------- -->
+<div class="modal-overlay" id="review-modal" role="dialog" aria-modal="true" aria-labelledby="review-modal-title">
+  <div class="modal-card">
+    <div class="modal-card-inner">
+      <a href="#booking" class="modal-close" aria-label="Close modal">&times;</a>
+
+      <p class="eyebrow">ONE LAST LOOK</p>
+      <h2 class="modal-title" id="review-modal-title">Review Your Booking</h2>
+      <p class="modal-desc">Please check your details before submitting your request.</p>
+
+      <div class="review-box">
+        <p class="review-box-title">TRAVELER INFO</p>
+        <div class="review-row"><span>Full Name</span><strong>Maria Santos</strong></div>
+        <div class="review-row"><span>Email Address</span><strong>maria.santos@gmail.com</strong></div>
+        <div class="review-row"><span>Mobile Number</span><strong>0917 123 4567</strong></div>
+      </div>
+
+      <div class="review-box">
+        <p class="review-box-title">TRIP INFO</p>
+        <div class="review-row"><span>Package</span><strong>MOND-01 · Mondstadt</strong></div>
+        <div class="review-row"><span>Schedule</span><strong>Sat, Nov 28 – Mon, Nov 30, 2026</strong></div>
+        <div class="review-row"><span>Group Size</span><strong>2 travelers</strong></div>
+        <div class="review-row"><span>Special Requests</span><strong>Vegetarian meals for 1 traveler; ground-floor room if possible.</strong></div>
+      </div>
+
+      <div class="review-box">
+        <p class="review-box-title">PRICE CALCULATION</p>
+        <div class="review-row"><span>Price × Group</span><strong>₱12,500 × 2 = ₱25,000</strong></div>
+        <div class="review-total-bar">
+          <span>Estimated Total</span>
+          <strong>₱25,000</strong>
+        </div>
+        <p class="review-note">Price is locked on submission; full payment required after Director approval.</p>
+      </div>
+
+      <div class="review-alert">
+        <span class="alert-icon" aria-hidden="true">i</span>
+        <p>Submitting creates a Pending request. Slots are held only after Director approval.</p>
+      </div>
+
+      <div class="modal-actions">
+        <a href="#booking" class="btn btn-light">Edit</a>
+        <a href="booking-status.html#confirm-modal" class="btn btn-dark">Confirm</a>
+        </div>
+    </div>
+  </div>
+</div>
+
+<!------------- (MODAL) BOOKING REQUEST RECEIVED ------------->
+<div class="modal-overlay" id="confirm-modal" role="dialog" aria-modal="true" aria-labelledby="confirm-modal-title">
+  <div class="modal-card">
+    <div class="modal-card-inner modal-confirm">
+      <a href="#booking" class="modal-close" aria-label="Close modal">&times;</a>
+
+      <div class="confirm-badge" aria-hidden="true"><span>&#10003;</span></div>
+
+      <h2 class="modal-title" id="confirm-modal-title">Booking Request Received!</h2>
+      <p class="modal-desc">Please keep your booking reference to check for status updates.</p>
+
+      <div class="ref-card">
+        <p class="ref-label">BOOKING REFERENCE</p>
+        <p class="ref-number">BK-2026-0042</p>
+      </div>
+
+      <div class="review-box">
+        <div class="review-row"><span>Package</span><strong>Mondstadt (3D/2N)</strong></div>
+        <div class="review-row"><span>Schedule</span><strong>Sat, Nov 28 – Mon, Nov 30, 2026</strong></div>
+        <div class="review-row"><span>Group Size</span><strong>2 travelers</strong></div>
+        <div class="review-row"><span>Total Amount</span><strong>₱25,000</strong></div>
+      </div>
+
+      <p class="confirm-note">
+        Once approved, view your payment instructions (GCash, Bank Transfer, Cash) and the Director's payment deadline using your Booking Reference + Email.
+      </p>
+
+      <div class="modal-actions">
+        <a href="#booking" class="btn btn-dark">Done</a>
+        <a href="about.html" class="btn btn-light">Back to Home</a>
+      </div>
+
+      <img class="modal-watermark" src="assets/mondstadt/watermark-sigil.png" alt="" aria-hidden="true">
+    </div>
+  </div>
+</div>
+
+<!------------- (MODAL) CHECK YOUR TRIP STATUS ------------->
+<div class="modal-overlay trip-modal" id="trip-status-modal" role="dialog" aria-modal="true" aria-labelledby="trip-modal-title">
+  <div class="modal-card">
+    <div class="modal-card-inner">
+      <a href="#!" class="modal-close" aria-label="Close modal">&times;</a>
+
+      <p class="eyebrow">Returning traveler</p>
+      <h2 class="modal-title" id="trip-modal-title">Check Your Trip Status</h2>
+      <p class="modal-desc">Enter the booking reference and the email address used when you submitted your request.</p>
+
+      <form class="trip-form" action="booking-status.html" method="get">
+        <div class="form-row">
+          <div class="form-field">
+            <label for="trip-ref">Booking Reference <span class="required">*</span></label>
+            <input class="form-input" type="text" id="trip-ref" name="ref" placeholder="CEL-7K2QX9" maxlength="20" required>
+            <p class="form-hint">Reference code from your booking confirmation.</p>
+          </div>
+
+          <div class="form-field">
+            <label for="trip-email">Email Address <span class="required">*</span></label>
+            <input class="form-input" type="email" id="trip-email" name="email" placeholder="Your email address" maxlength="100" required>
+            <p class="form-hint">Email you used to book a date.</p>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-dark trip-submit">Find My Booking &rarr;</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- ---------- FOOTER ---------- -->
+<footer class="footer" id="footer">
+
+  <div class="footer-top">
+
+    <a href="about.html" class="logo">
+      <img src="assets/homepage/teyvat_logo_light.png" alt="Celestia Travels and Tours logo" class="logo-img footer-logo-img">
+    </a>
+
+    <div class="footer-info">
+      <span class="follow">FOLLOW US ON</span>
+      <div class="social">
+        <a href="#" class="social-icon" aria-label="Facebook"><img src="assets/homepage/Landing Page/Facebook.png" alt=""></a>
+        <a href="#" class="social-icon" aria-label="Instagram"><img src="assets/homepage/Landing Page/Instagram.png" alt=""></a>
+        <a href="#" class="social-icon" aria-label="TikTok"><img src="assets/homepage/Landing Page/TikTok.png" alt=""></a>
+        <a href="#" class="social-icon" aria-label="X"><img src="assets/homepage/Landing Page/X (Twitter).png" alt=""></a>
+      </div>
+      <p>Email: celestiatravels&amp;tours@gmail.com</p>
+      <p>Location: Celestia, Teyvat</p>
+    </div>
+
+  </div>
+
+  <p class="copyright">© 2026 Celestia Travels and Tours. All rights reserved. 
+  <br>Note: Background image is AI-generated and used as the back-most, semi-transparent layer. </p>
+
+
+</footer>
+
+<script src="js/script.js" defer></script>
+
+</body>
+</html>
