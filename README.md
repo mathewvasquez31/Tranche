@@ -32,6 +32,7 @@ Celestia Travels and Tours covers the following seven nations:
 
 - HTML5
 - CSS3
+- JavaScript
 
 ## Project Scope
 
